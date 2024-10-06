@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SDG 14: Life Below Water</title>
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='pagestyle.css')}}"
+    />
+</head>
+<body>
+    <nav class="bar">
+        <a href="/dashboard" id="ho"><button id="home" >Home</button></a>
+        <button id="ReadButton">Read Aloud</button>
+        <a href="/quiz14" id="qu"><button id="quiz"> QUIZ</button></a>
+       </nav>
+<section>
+    <div class="container">
+        <h1>Sustainable Development Goal 14: Life Below Water</h1>
+        <p>SDG 14 aims to conserve and sustainably use the oceans, seas, and marine resources. Oceans regulate the planet's climate, provide oxygen, and support a wide variety of life. However, they are under threat due to overfishing, pollution, and climate change. This goal emphasizes the protection and sustainable management of marine ecosystems to ensure their health and resilience for future generations.</p>
+    </section>
+    <section>
+        <h2>Key Targets of SDG 14</h2>
+        <p>The key targets under SDG 14 aim to reduce marine pollution, protect marine and coastal ecosystems, and prevent overfishing. Some of the important targets include:</p>
+        
+        <ul>
+            <li><strong>Target 14.1</strong>: By 2025, prevent and significantly reduce marine pollution of all kinds, particularly from land-based activities, including marine debris and nutrient pollution.</li>
+            <li><strong>Target 14.2</strong>: By 2020, sustainably manage and protect marine and coastal ecosystems to avoid significant adverse impacts, including by strengthening their resilience and taking action for their restoration.</li>
+            <li><strong>Target 14.3</strong>: Minimize and address the impacts of ocean acidification, which is caused by increased carbon dioxide emissions.</li>
+            <li><strong>Target 14.4</strong>: By 2020, effectively regulate harvesting and end overfishing, illegal, unreported, and unregulated fishing, and destructive fishing practices.</li>
+            <li><strong>Target 14.5</strong>: By 2020, conserve at least 10% of coastal and marine areas, consistent with national and international laws.</li>
+            <li><strong>Target 14.6</strong>: By 2020, prohibit certain forms of fisheries subsidies that contribute to overcapacity and overfishing.</li>
+            <li><strong>Target 14.7</strong>: By 2030, increase the economic benefits to Small Island developing states and least developed countries from the sustainable use of marine resources, including sustainable fisheries, aquaculture, and tourism.</li>
+            <li><strong>Target 14.a</strong>: Increase scientific knowledge, develop research capacity, and transfer marine technology to improve ocean health and enhance the contribution of marine biodiversity to sustainable development.</li>
+        </ul>
+    </section>
+    <section>
+        <h2>Why SDG 14 is Important</h2>
+        <p>Life below water is essential for maintaining the balance of ecosystems and supporting human livelihoods. Here’s why SDG 14 is crucial:</p>
+        <ul>
+            <li><strong>Oxygen Production</strong>: Oceans produce more than half of the Earth's oxygen, making them critical for life on land.</li>
+            <li><strong>Climate Regulation</strong>: Oceans absorb large amounts of carbon dioxide, helping to regulate the global climate and reduce the impacts of climate change.</li>
+            <li><strong>Economic Benefits</strong>: Oceans support fisheries, tourism, and shipping industries, providing livelihoods for millions of people worldwide.</li>
+            <li><strong>Biodiversity</strong>: Oceans are home to a vast array of marine species, many of which are crucial for healthy ecosystems. Conserving this biodiversity ensures the resilience of marine ecosystems.</li>
+            <li><strong>Food Security</strong>: Sustainable fishing practices ensure that marine resources are available to support global food security, especially for coastal communities.</li>
+        </ul>
+    </section>
+    <section>
+        <h2>Challenges to Achieving SDG 14</h2>
+        <p>Despite its importance, achieving SDG 14 faces several significant challenges:</p>
+        <ul>
+            <li><strong>Marine Pollution</strong>: Plastics, chemicals, and other pollutants from land-based sources are accumulating in the oceans, causing damage to marine life and ecosystems.</li>
+            <li><strong>Overfishing</strong>: Unsustainable fishing practices are depleting fish stocks, threatening biodiversity, and disrupting ecosystems.</li>
+            <li><strong>Ocean Acidification</strong>: Increased carbon dioxide emissions are causing the oceans to become more acidic, which has harmful effects on marine life, particularly coral reefs and shellfish.</li>
+            <li><strong>Weak Regulation</strong>: Many countries struggle to enforce laws that regulate fishing practices and protect marine environments, leading to illegal and unregulated activities.</li>
+            <li><strong>Climate Change</strong>: Rising sea temperatures and sea levels, caused by climate change, are affecting marine species and habitats, leading to the loss of biodiversity and changes in fish distribution.</li>
+        </ul>
+    </section>
+    <section>
+        <h2>How You Can Contribute to SDG 14</h2>
+        <p>Here are some ways individuals can help protect life below water:</p>
+        <ul>
+            <li><strong>Reduce Plastic Use</strong>: Cut down on single-use plastics like straws, bags, and bottles to prevent them from ending up in the ocean.</li>
+            <li><strong>Participate in Beach Cleanups</strong>: Join local efforts to clean up coastlines and prevent litter from entering the ocean.</li>
+            <li><strong>Support Sustainable Seafood</strong>: Choose seafood that is sourced sustainably to prevent overfishing and promote healthy fish populations.</li>
+            <li><strong>Conserve Water</strong>: Reducing water use at home helps prevent water pollution, which can run off into the oceans and affect marine life.</li>
+            <li><strong>Spread Awareness</strong>: Educate others about the importance of ocean conservation and encourage responsible behavior to protect marine ecosystems.</li>
+        </ul>
+    </section>
+    <section>
+        <h2>Conclusion</h2>
+        <p>The health of the oceans is inextricably linked to the health of our planet and our well-being. SDG 14 emphasizes the urgent need to protect marine ecosystems from pollution, overfishing, and the impacts of climate change. Achieving this goal requires coordinated efforts from governments, businesses, and individuals to ensure that the oceans can continue to provide vital resources and maintain biodiversity for future generations.</p>
+    </div>
+</section>
+<script>
+    let isSpeaking = false;
+    const readButton = document.getElementById("ReadButton");
+
+    readButton.addEventListener("click", function () {
+      if (!isSpeaking) {
+        const msg = new SpeechSynthesisUtterance();
+        msg.text = document.querySelector("body").innerText;
+        window.speechSynthesis.speak(msg);
+
+        isSpeaking = true;
+        readButton.textContent = "Stop Reading";
+
+        msg.onend = function () {
+          isSpeaking = false;
+          readButton.textContent = "Read Aloud";
+        };
+      } else {
+        window.speechSynthesis.cancel();
+
+        isSpeaking = false;
+        readButton.textContent = "Read Aloud";
+      }
+    });
+
+    window.addEventListener("beforeunload", function () {
+      if (speechSynthesis.speaking) {
+        speechSynthesis.cancel();
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SDG Quiz for Kids</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='Quiz1.css')}}" />
+</head>
+<body>
+    <header>
+        <h1>Learn & Play: Sustainable Development Goals Quiz</h1>
+        <p>Test your knowledge about how we can make the world a better place!</p>
+    </header>
+
+    <section id="quiz">
+        <h2>Sustainable Development Goals (SDG16 -Peace, Justice, and Strong Institutions) Quiz</h2>
+        
+       
+        <div class="question">
+            <p><strong>1. What is the main goal of SDG 16 (Peace, Justice, and Strong Institutions)?</strong></p>
+            <form id="question1">
+                <input type="radio" id="q1a" name="q1" value="right">
+                <label for="q1a">To promote peaceful and inclusive societies for sustainable development</label><br><br>
+                <input type="radio" id="q1b" name="q1" value="wrong">
+                <label for="q1b">To encourage armed conflict</label><br><br>
+                <input type="radio" id="q1c" name="q1" value="wrong">
+                <label for="q1c">To limit access to justice</label><br>
+            </form>
+        </div>
+        
+        <div class="question">
+            <p><strong>2. True or False: Access to justice is essential for building peaceful societies.</strong></p>
+            <form id="question2">
+                <input type="radio" id="q2true" name="q2" value="right">
+                <label for="q2true">True</label><br><br>
+                <input type="radio" id="q2false" name="q2" value="wrong">
+                <label for="q2false">False</label><br>
+            </form>
+        </div>
+        
+        <div class="question">
+            <p><strong>3. Which of the following is a target of SDG 16?</strong></p>
+            <form id="question3">
+                <input type="radio" id="q3a" name="q3" value="wrong">
+                <label for="q3a">To reduce the availability of information</label><br><br>
+                <input type="radio" id="q3b" name="q3" value="right">
+                <label for="q3b">To promote the rule of law at the national and international levels</label><br><br>
+                <input type="radio" id="q3c" name="q3" value="wrong">
+                <label for="q3c">To discourage public participation in governance</label><br>
+            </form>
+        </div>
+        
+        <div class="question">
+            <p><strong>4. What is one way to promote peaceful societies?</strong></p>
+            <form id="question4">
+                <input type="radio" id="q4a" name="q4" value="wrong">
+                <label for="q4a">By supporting discrimination and inequality</label><br><br>
+                <input type="radio" id="q4b" name="q4" value="right">
+                <label for="q4b">By fostering dialogue and tolerance among communities</label><br><br>
+                <input type="radio" id="q4c" name="q4" value="wrong">
+                <label for="q4c">By ignoring conflicts and tensions</label><br>
+            </form>
+        </div>
+        
+        <div class="question">
+            <p><strong>5. How can transparency in governance contribute to SDG 16?</strong></p>
+            <form id="question5">
+                <input type="radio" id="q5a" name="q5" value="right">
+                <label for="q5a">It enhances accountability and trust in institutions</label><br><br>
+                <input type="radio" id="q5b" name="q5" value="wrong">
+                <label for="q5b">It leads to corruption and abuse of power</label><br><br>
+                <input type="radio" id="q5c" name="q5" value="wrong">
+                <label for="q5c">It makes governance more complex and inaccessible</label><br>
+            </form>
+        </div>
+         
+         <button type="button" onclick="checkAnswers()">Submit Answers</button>
+
+         
+         <div id="result"></div>
+     </section>
+ 
+    
+     <script src="{{ url_for('static', filename='sdg1.js') }}"></script>
+ </body>
+ </html>

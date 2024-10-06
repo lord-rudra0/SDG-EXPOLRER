@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SDG 5: Gender Equality</title>
+    
+    <link
+    rel="stylesheet"
+    href="{{url_for('static', filename='pagestyle.css')}}"
+  />
+</head>
+<body>
+    <nav class="bar">
+        <a href="/dashboard" id="ho"><button id="home" >Home</button></a>
+        <button id="ReadButton">Read Aloud</button>
+        <a href="/quiz5" id="qu"><button id="quiz"> QUIZ</button></a>
+       </nav>
+    <section>
+    <div class="container">
+        <h1>Sustainable Development Goal 5: Gender Equality</h1>
+        <p>Sustainable Development Goal 5 (SDG 5) aims to achieve gender equality and empower all women and girls. Gender equality is not only a fundamental human right but also a necessary foundation for a peaceful, prosperous, and sustainable world. Empowering women and girls can lead to a more equitable society and foster sustainable development.</p>
+    </section>
+    <section>
+        <h2>Key Targets of SDG 5</h2>
+        <p>SDG 5 includes 9 targets that focus on various aspects of gender equality. Here are the major targets:</p>
+        
+        <ul>
+            <li><strong>End Discrimination and Violence (Target 5.1)</strong>: End all forms of discrimination against all women and girls everywhere and eliminate all forms of violence, including trafficking and sexual exploitation.</li>
+            <li><strong>Eliminate Harmful Practices (Target 5.2)</strong>: Eliminate all harmful practices, such as child, early, and forced marriage and female genital mutilation.</li>
+            <li><strong>Recognize and Value Unpaid Care and Domestic Work (Target 5.4)</strong>: Recognize and value unpaid care and domestic work through the provision of public services, infrastructure, and social protection policies.</li>
+            <li><strong>Ensure Women’s Full Participation (Target 5.5)</strong>: Ensure women’s full and effective participation and equal opportunities for leadership at all levels of decision-making in political, economic, and public life.</li>
+            <li><strong>Access to Sexual and Reproductive Health (Target 5.6)</strong>: Ensure universal access to sexual and reproductive health and reproductive rights.</li>
+            <li><strong>Utilize Technology to Promote Women’s Empowerment (Target 5.b)</strong>: Enhance the use of enabling technology, in particular information and communications technology, to promote the empowerment of women.</li>
+            <li><strong>Adopt and Strengthen Sound Policies (Target 5.c)</strong>: Adopt and strengthen policies and enforceable legislation for the promotion of gender equality and the empowerment of all women and girls at all levels.</li>
+            <li><strong>Ensure Equal Rights to Resources (Target 5.a)</strong>: Ensure women’s full and equal access to and control over land and other forms of property, financial services, inheritance, and natural resources.</li>
+            <li><strong>End Child Marriage and Female Genital Mutilation (Target 5.3)</strong>: Eliminate all harmful practices, such as child, early, and forced marriage and female genital mutilation.</li>
+        </ul>
+    </section>
+    <section>
+        <h2>Why SDG 5 is Important</h2>
+        <p>Achieving SDG 5 is essential for several reasons:</p>
+        <ul>
+            <li><strong>Human Rights</strong>: Gender equality is a basic human right, and empowering women and girls is crucial for achieving justice and equality.</li>
+            <li><strong>Economic Growth</strong>: Gender equality contributes to economic development; when women participate equally in the labor market, it leads to economic growth and improved prosperity for all.</li>
+            <li><strong>Improved Health and Well-being</strong>: Empowering women leads to better health outcomes for families and communities, as educated women are more likely to prioritize health and education.</li>
+            <li><strong>Reduction of Poverty</strong>: Addressing gender disparities can help reduce poverty, as women are often the primary caregivers and their economic empowerment benefits entire families.</li>
+            <li><strong>Peace and Security</strong>: Gender equality promotes peace and stability, as societies that value gender equality are more likely to resolve conflicts peacefully.</li>
+        </ul>
+    </section>
+    <section>
+        <h2>Current Challenges to Achieving SDG 5</h2>
+        <p>Despite progress, significant challenges remain:</p>
+        <ul>
+            <li><strong>Gender-based Violence</strong>: Violence against women and girls remains widespread, with many facing physical, sexual, and psychological violence.</li>
+            <li><strong>Discrimination and Inequality</strong>: Women and girls continue to face discrimination in various forms, including unequal pay, limited access to education, and lack of political representation.</li>
+            <li><strong>Limited Access to Resources</strong>: Women often have limited access to resources, including land, finance, and technology, which hampers their economic empowerment.</li>
+            <li><strong>Cultural Norms and Stereotypes</strong>: Deep-rooted cultural norms and stereotypes continue to hinder gender equality and perpetuate discrimination.</li>
+            <li><strong>Impact of Global Crises</strong>: Global crises, such as the COVID-19 pandemic, have exacerbated existing inequalities and increased the risk of gender-based violence.</li>
+        </ul>
+    </section>
+    <section>
+        <h2>Conclusion</h2>
+        <p>SDG 5 is crucial for achieving a sustainable future, as gender equality and the empowerment of women and girls are essential for social, economic, and environmental progress. To achieve this goal, it is imperative to address the barriers and challenges that hinder gender equality and to promote policies and practices that empower women and girls at all levels. Collective action from governments, civil society, and individuals is necessary to create a more equitable world.</p>
+    </div>
+</section>
+<script>
+    let isSpeaking = false;
+    const readButton = document.getElementById("ReadButton");
+
+    readButton.addEventListener("click", function () {
+      if (!isSpeaking) {
+        const msg = new SpeechSynthesisUtterance();
+        msg.text = document.querySelector("body").innerText;
+        window.speechSynthesis.speak(msg);
+
+        isSpeaking = true;
+        readButton.textContent = "Stop Reading";
+
+        msg.onend = function () {
+          isSpeaking = false;
+          readButton.textContent = "Read Aloud";
+        };
+      } else {
+        window.speechSynthesis.cancel();
+
+        isSpeaking = false;
+        readButton.textContent = "Read Aloud";
+      }
+    });
+
+    window.addEventListener("beforeunload", function () {
+      if (speechSynthesis.speaking) {
+        speechSynthesis.cancel();
+      }
+    });
+  </script>
+</body>
+</html>

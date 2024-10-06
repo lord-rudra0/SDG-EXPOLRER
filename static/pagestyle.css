@@ -1,0 +1,93 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 20px;
+    background-color: #f9fbfa;
+}
+
+h1 {
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 20px;
+
+}
+
+h2 {
+    color: #2980b9;
+    margin-top: 20px;
+}
+
+ol {
+    margin-bottom: 20px;
+    padding-left: 20px;
+}
+
+p {
+    margin: 10px 0;
+}
+
+section {
+    margin-bottom: 30px;
+    padding: 15px;
+    border: 1px solid #eae4e4;
+    border-radius: 5px;
+    background-color: #ffffff;
+    margin: 10px;
+    border-radius: 10px;
+    background-color: #e8dfcc;
+}
+
+header {
+    border: #f9fbfd solid 2px;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #cee7f8;
+    text-align: center;
+
+
+}
+
+#qu{
+  flex-flow: column;
+  float: right;
+   
+}
+
+
+
+
+#quiz:hover {
+    background-color: #7ea1bb;
+}
+#home:hover {
+    background-color: #7ea1bb;
+}
+#ReadButton:hover {
+    background-color: #7ea1bb;
+}
+
+#quiz, #home, #ReadButton {
+    display: inline-block;
+    padding: 10px 20px; /* Adjust padding for better size */
+    border-radius: 8px; /* Slightly round the corners */
+    background-color: #28a745;
+    color: white;
+    font-size: 16px; /* Increase font size */
+    font-weight: 600; /* Make font weight more prominent */
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth hover transition */
+}
+
+#quiz:hover, #home:hover, #ReadButton:hover {
+    background-color: #218838; /* Darken the background on hover */
+    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.15); /* Slightly bigger shadow on hover */
+}
+
+#quiz:active, #home:active, #ReadButton:active {
+    background-color: #19692c; /* Active state for click */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Compress shadow on click */
+}

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>No Poverty Game - SDG Goal 1</title>
+  <style>
+    
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 20px;
+  }
+  
+  h1 {
+    color: #333;
+  }
+  
+  #game-container {
+    display: inline-block;
+    position: relative; 
+    margin: 20px;
+  }
+  
+  canvas {
+    border: 2px solid black;
+    background-color: #fff; 
+  }
+  
+  #lines {
+    position: absolute; 
+    top: 0;
+    left: 0;
+    width: 600px;
+    height: 400px;
+  }
+  
+  .line {
+    position: absolute;
+    background-color: black;
+  }
+  
+  .line-horizontal {
+    height: 2px; 
+    width: 100%; 
+  }
+  
+  .line-vertical {
+    width: 2px; 
+    height: 100%; 
+  }
+  
+  #info {
+    margin-top: 20px;
+  }
+  
+  button {
+    padding: 10px 20px;
+    margin-top: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007BFF; 
+    color: white;
+  }
+  
+  button:disabled {
+    background-color: #ccc; 
+    cursor: not-allowed;
+  }
+  
+</style>
+</head>
+<body>
+  <h1>No Poverty Game</h1>
+  <p>Help develop impoverished areas by gathering resources and building infrastructure!</p>
+  
+  <div id="game-container">
+    <div id="lines"></div> 
+    <canvas id="gameCanvas" width="600" height="400"></canvas>
+  </div>
+  
+  <div id="info">
+    <p>Resources Collected: <span id="resources">0</span></p>
+    <p>Structures Built: <span id="structures">0</span></p>
+    <button id="buildBtn" disabled>Build Structure</button>
+  </div>
+  
+  <button id="startBtn">Start Game</button>
+
+  <script>
+    
+
+const canvas = document.getElementById("gameCanvas");
+const ctx = canvas.getContext("2d");
+
+let player = {
+  x: 50,
+  y: 200,
+  width: 30,
+  height: 30,
+  color: "blue",
+  speed: 5
+};
+
+let resources = 0;
+let structures = 0;
+let targetStructures = 5; 
+let isGameRunning = false;
+
+
+let resourceBlocks = [
+  { name: "Education", x: randomPosition(canvas.width), y: randomPosition(canvas.height), width: 20, height: 20, color: "green" },
+  { name: "Healthcare", x: randomPosition(canvas.width), y: randomPosition(canvas.height), width: 20, height: 20, color: "orange" },
+  { name: "Infrastructure", x: randomPosition(canvas.width), y: randomPosition(canvas.height), width: 20, height: 20, color: "purple" },
+  { name: "Jobs", x: randomPosition(canvas.width), y: randomPosition(canvas.height), width: 20, height: 20, color: "red" },
+  { name: "Social Welfare", x: randomPosition(canvas.width), y: randomPosition(canvas.height), width: 20, height: 20, color: "yellow" }
+];
+
+
+document.getElementById("startBtn").addEventListener("click", startGame);
+function startGame() {
+  isGameRunning = true;
+  resources = 0;
+  structures = 0;
+  document.getElementById("resources").innerText = resources;
+  document.getElementById("structures").innerText = structures;
+  document.getElementById("buildBtn").disabled = true;
+  gameLoop();
+}
+
+window.addEventListener("keydown", (e) => {
+  if (e.key === "ArrowUp") player.y -= player.speed;
+  if (e.key === "ArrowDown") player.y += player.speed;
+  if (e.key === "ArrowLeft") player.x -= player.speed;
+  if (e.key === "ArrowRight") player.x += player.speed;
+});
+
+
+document.getElementById("buildBtn").addEventListener("click", buildStructure);
+
+function buildStructure() {
+  if (resources >= 10) {
+    resources -= 10;
+    structures += 1;
+    document.getElementById("resources").innerText = resources;
+    document.getElementById("structures").innerText = structures;
+
+    if (structures >= targetStructures) {
+      alert("Congratulations! You've built enough structures and won the game!");
+      isGameRunning = false;
+    }
+  }
+}
+
+
+function gameLoop() {
+  if (!isGameRunning) return;
+
+  
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+   
+  ctx.fillStyle = player.color;
+  ctx.fillRect(player.x, player.y, player.width, player.height);
+
+  
+  resourceBlocks.forEach((resource) => {
+    ctx.fillStyle = resource.color;
+    ctx.fillRect(resource.x, resource.y, resource.width, resource.height);
+    ctx.fillStyle = "black";
+    ctx.font = "12px Arial";
+    ctx.fillText(resource.name, resource.x, resource.y - 5); 
+  });
+
+  
+  resourceBlocks.forEach((resource) => {
+    if (checkCollision(player, resource)) {
+      resources += 5;
+      document.getElementById("resources").innerText = resources;
+
+      
+      resource.x = randomPosition(canvas.width);
+      resource.y = randomPosition(canvas.height);
+
+      
+      if (resources >= 10) {
+        document.getElementById("buildBtn").disabled = false;
+      }
+    }
+  });
+
+  
+  requestAnimationFrame(gameLoop);
+}
+
+
+function checkCollision(a, b) {
+  return a.x < b.x + b.width &&
+         a.x + a.width > b.x &&
+         a.y < b.y + b.height &&
+         a.y + a.height > b.y;
+}
+
+
+function randomPosition(limit) {
+  return Math.random() * (limit - 20);
+}
+
+  </script>
+</body>
+</html>

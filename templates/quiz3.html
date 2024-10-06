@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SDG Quiz for Kids</title> 
+    <link rel="stylesheet" href="{{url_for('static', filename='Quiz1.css')}}" />
+</head>
+<body>
+    <header>
+        <h1>Learn & Play: Sustainable Development Goals Quiz</h1>
+        <p>Test your knowledge about how we can make the world a better place!</p>
+    </header>
+
+    <section id="quiz">
+        <h2>Sustainable Development Goals (SDG3-Good Health and Well-being) Quiz</h2>
+        
+       
+        <div class="question">
+            <p><strong>1. What is the primary goal of SDG 3 (Good Health and Well-being)?</strong></p>
+            <form id="question1">
+                <input type="radio" id="q1a" name="q1" value="wrong">
+                <label for="q1a">To ensure everyone has access to entertainment</label><br><br>
+                <input type="radio" id="q1b" name="q1" value="right">
+                <label for="q1b">To ensure healthy lives and promote well-being for all at all ages</label><br><br>
+                <input type="radio" id="q1c" name="q1" value="wrong">
+                <label for="q1c"> To provide everyone with a gym membership</label><br>
+            </form>
+        </div>
+
+        
+        <div class="question">
+            <p><strong>2. Which of the following is a target under SDG 3?</strong></p>
+            <form id="question2">
+                <input type="radio" id="q2a" name="q2" value="right">
+                <label for="q2a">Reducing global maternal mortality to less than 70 per 100,000 live births</label><br><br>
+                <input type="radio" id="q2b" name="q2" value="wrong">
+                <label for="q2b">Doubling the number of doctors worldwide</label><br><br>
+                <input type="radio" id="q2c" name="q2" value="wrong">
+                <label for="q2c">Increasing the production of health-related products</label><br>
+            </form>
+        </div>
+
+        
+        <div class="question">
+            <p><strong>3. By what year does SDG 3 aim to end preventable deaths of newborns and children under five years of age?</strong></p>
+            <form id="question3">
+                <input type="radio" id="q3a" name="q3" value="wrong">
+                <label for="q3a">2050</label><br><br>
+                <input type="radio" id="q3b" name="q3" value="right">
+                <label for="q3b">2030</label><br><br>
+                <input type="radio" id="q3c" name="q3" value="wrong">
+                <label for="q3c">2040</label><br>
+            </form>
+        </div>
+        
+        <div class="question">
+            <p><strong>4. How does SDG 3 aim to reduce deaths from road traffic accidents?</strong></p>
+            <form id="question3">
+                <input type="radio" id="q4a" name="q4" value="wrong">
+                <label for="q4a">By promoting faster speed limits</label><br><br>
+                <input type="radio" id="q4b" name="q4" value="right">
+                <label for="q4b"> By halving the number of global deaths and injuries from road traffic accidents by 2030</label><br><br>
+                <input type="radio" id="q4c" name="q4" value="wrong">
+                <label for="q4c">By banning cars in cities </label><br>
+            </form>
+        </div>
+        
+        <div class="question">
+            <p><strong>5. What is one major barrier to achieving SDG 3’s goal of universal health coverage?</strong></p>
+            <form id="question3">
+                <input type="radio" id="q5a" name="q5" value="right">
+                <label for="q5a">The lack of qualified health professionals in rural and underserved areas</label><br><br>
+                <input type="radio" id="q5b" name="q5" value="wrong">
+                <label for="q5b"> The overuse of natural resources</label><br><br>
+                <input type="radio" id="q5c" name="q5" value="wrong">
+                <label for="q5c">The increase in entertainment-related diseases</label><br>
+            </form>
+        </div>
+         
+         <button type="button" onclick="checkAnswers()">Submit Answers</button>
+
+         
+         <div id="result"></div>
+     </section>
+ 
+    
+     <script src="{{ url_for('static', filename='sdg1.js') }}"></script>
+ </body>
+ </html>

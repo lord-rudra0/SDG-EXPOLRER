@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SDG 15: Life on Land</title>
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='pagestyle.css')}}"
+    />
+</head>
+<body>
+    <nav class="bar">
+        <a href="/dashboard" id="ho"><button id="home" >Home</button></a>
+        <button id="ReadButton">Read Aloud</button>
+        <a href="/quiz15" id="qu"><button id="quiz"> QUIZ</button></a>
+       </nav>
+<section>
+    <div class="container">
+        <h1>Sustainable Development Goal 15: Life on Land</h1>
+        <p>SDG 15 aims to protect, restore, and promote the sustainable use of terrestrial ecosystems, manage forests sustainably, combat desertification, halt and reverse land degradation, and stop biodiversity loss. Life on land is critical for providing food, clean air, water, and many other resources that support human well-being and the planet's health.</p>
+    </section>
+    <section>
+        <h2>Key Targets of SDG 15</h2>
+        <p>The key targets under SDG 15 focus on biodiversity conservation, sustainable forest management, and the fight against desertification. Some of the most important targets include:</p>
+        
+        <ul>
+            <li><strong>Target 15.1</strong>: Ensure the conservation, restoration, and sustainable use of terrestrial and inland freshwater ecosystems and their services by 2020.</li>
+            <li><strong>Target 15.2</strong>: Promote the sustainable management of forests, halt deforestation, restore degraded forests, and increase afforestation and reforestation by 2020.</li>
+            <li><strong>Target 15.3</strong>: Combat desertification, restore degraded land and soil, and strive to achieve a land degradation-neutral world by 2030.</li>
+            <li><strong>Target 15.4</strong>: Ensure the conservation of mountain ecosystems, including their biodiversity, to enhance their capacity to provide benefits essential for sustainable development.</li>
+            <li><strong>Target 15.5</strong>: Take urgent action to reduce the degradation of natural habitats, halt the loss of biodiversity, and protect threatened species from extinction by 2020.</li>
+            <li><strong>Target 15.6</strong>: Promote fair and equitable sharing of benefits arising from the utilization of genetic resources and promote appropriate access to such resources.</li>
+            <li><strong>Target 15.7</strong>: Take action to end poaching and trafficking of protected species and address demand and supply of illegal wildlife products.</li>
+        </ul>
+    </section>
+    <section>
+        <h2>Why SDG 15 is Important</h2>
+        <p>Protecting life on land is essential for maintaining ecosystem balance, preventing climate change, and supporting human life. Here are key reasons why SDG 15 is vital:</p>
+        <ul>
+            <li><strong>Biodiversity</strong>: Terrestrial ecosystems, including forests, mountains, and grasslands, are home to a wide variety of species. Protecting biodiversity ensures the survival of countless plants and animals and the resilience of ecosystems.</li>
+            <li><strong>Carbon Sequestration</strong>: Forests play a crucial role in absorbing carbon dioxide, helping to mitigate climate change and maintain the balance of the Earth's atmosphere.</li>
+            <li><strong>Food Security</strong>: Healthy soils and ecosystems are essential for agricultural productivity, supporting global food security and preventing hunger.</li>
+            <li><strong>Water Cycle</strong>: Forests and wetlands help regulate the water cycle, ensuring a stable supply of clean water for humans and ecosystems.</li>
+            <li><strong>Human Livelihoods</strong>: Many communities, especially indigenous peoples, depend on forests and natural resources for their livelihoods, culture, and well-being.</li>
+            <li><strong>Pollination</strong>: Terrestrial ecosystems provide habitat for pollinators like bees, which are essential for crop production and maintaining biodiversity.</li>
+        </ul>
+    </section>
+    <section>
+        <h2>Challenges to Achieving SDG 15</h2>
+        <p>Despite its importance, several challenges hinder the progress of SDG 15:</p>
+        <ul>
+            <li><strong>Deforestation</strong>: The world is losing forests at an alarming rate due to logging, agriculture, and infrastructure development, leading to habitat loss and increased carbon emissions.</li>
+            <li><strong>Land Degradation</strong>: Overgrazing, unsustainable farming practices, and urbanization are contributing to soil erosion, desertification, and the degradation of ecosystems.</li>
+            <li><strong>Biodiversity Loss</strong>: Habitat destruction, poaching, and climate change are causing the extinction of species and reducing biodiversity at an unprecedented rate.</li>
+            <li><strong>Climate Change</strong>: Climate change is affecting ecosystems, causing species to shift their habitats and threatening the survival of many plants and animals.</li>
+            <li><strong>Weak Governance</strong>: In many regions, weak regulations and enforcement allow illegal logging, wildlife trafficking, and land conversion to continue unchecked.</li>
+        </ul>
+    </section>
+    <section>
+        <h2>How You Can Contribute to SDG 15</h2>
+        <p>There are many ways individuals can help protect life on land:</p>
+        <ul>
+            <li><strong>Support Reforestation</strong>: Participate in or donate to tree-planting initiatives to help restore degraded forests and combat deforestation.</li>
+            <li><strong>Reduce Deforestation Impact</strong>: Choose sustainably sourced products such as timber, paper, and palm oil that are certified by organizations like FSC (Forest Stewardship Council).</li>
+            <li><strong>Practice Sustainable Agriculture</strong>: Grow your own food sustainably, or support local farms that use eco-friendly farming practices to prevent soil degradation.</li>
+            <li><strong>Support Wildlife Conservation</strong>: Raise awareness and donate to organizations working to protect endangered species and combat poaching and illegal wildlife trafficking.</li>
+            <li><strong>Reduce Waste</strong>: Minimize your consumption of resources and reduce waste to lower the demand for land conversion and resource extraction.</li>
+            <li><strong>Educate Others</strong>: Spread awareness about the importance of biodiversity and the need to conserve natural habitats through social media or community involvement.</li>
+        </ul>
+    </section>
+    <section>
+        <h2>Conclusion</h2>
+        <p>Life on land is fundamental to the health and sustainability of the planet. SDG 15 emphasizes the need to protect terrestrial ecosystems, restore degraded environments, and halt biodiversity loss. Achieving this goal will require coordinated efforts from governments, businesses, communities, and individuals. By working together, we can ensure that ecosystems remain resilient and continue to provide essential resources for present and future generations.</p>
+    </div>
+</section>
+<script>
+    let isSpeaking = false;
+    const readButton = document.getElementById("ReadButton");
+
+    readButton.addEventListener("click", function () {
+      if (!isSpeaking) {
+        const msg = new SpeechSynthesisUtterance();
+        msg.text = document.querySelector("body").innerText;
+        window.speechSynthesis.speak(msg);
+
+        isSpeaking = true;
+        readButton.textContent = "Stop Reading";
+
+        msg.onend = function () {
+          isSpeaking = false;
+          readButton.textContent = "Read Aloud";
+        };
+      } else {
+        window.speechSynthesis.cancel();
+
+        isSpeaking = false;
+        readButton.textContent = "Read Aloud";
+      }
+    });
+
+    window.addEventListener("beforeunload", function () {
+      if (speechSynthesis.speaking) {
+        speechSynthesis.cancel();
+      }
+    });
+  </script>
+</body>
+</html>

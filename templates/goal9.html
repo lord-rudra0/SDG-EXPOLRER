@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SDG 9: Industry, Innovation, and Infrastructure</title>
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='pagestyle.css')}}"
+    />
+</head>
+<body>
+    <nav class="bar">
+        <a href="/dashboard" id="ho"><button id="home" >Home</button></a>
+        <button id="ReadButton">Read Aloud</button>
+        <a href="/quiz9" id="qu"><button id="quiz"> QUIZ</button></a>
+       </nav>
+    <section>
+    <div class="container">
+        <h1>Sustainable Development Goal 9: Industry, Innovation, and Infrastructure</h1>
+        <p>Sustainable Development Goal 9 (SDG 9) aims to build resilient infrastructure, promote inclusive and sustainable industrialization, and foster innovation. It emphasizes the role of infrastructure and industrialization in promoting economic growth, creating jobs, and ensuring sustainable development.</p>
+    </section>
+    <section>
+        <h2>Key Targets of SDG 9</h2>
+        <p>SDG 9 includes 8 targets that focus on various aspects of industry, innovation, and infrastructure. Here are the major targets:</p>
+        
+        <ul>
+            <li><strong>Build Resilient Infrastructure (Target 9.1)</strong>: Develop quality, reliable, sustainable, and resilient infrastructure, including regional and transborder infrastructure, to support economic development and human well-being.</li>
+            <li><strong>Promote Inclusive and Sustainable Industrialization (Target 9.2)</strong>: Promote inclusive and sustainable industrialization, and by 2030, significantly raise industry’s share of employment and gross domestic product.</li>
+            <li><strong>Increase the Access of Small-scale Industries (Target 9.3)</strong>: Enhance the access of small-scale industries to financial services, including affordable credit, and integrate them into value chains and markets.</li>
+            <li><strong>Research and Innovation (Target 9.5)</strong>: Enhance scientific research, upgrade the technological capabilities of industrial sectors in all countries, in particular developing countries.</li>
+            <li><strong>Sustainable Practices (Target 9.4)</strong>: By 2030, upgrade infrastructure and retrofit industries to make them sustainable, with increased resource-use efficiency and greater adoption of clean and environmentally sound technologies.</li>
+            <li><strong>Facilitate Access to ICT (Target 9.c)</strong>: Significantly increase access to information and communications technology and strive to provide universal and affordable access to the Internet in least developed countries.</li>
+            <li><strong>Increase Infrastructure Investment (Target 9.a)</strong>: Facilitate sustainable and resilient infrastructure development in developing countries through enhanced financial, technological, and technical support.</li>
+            <li><strong>Regional and Transborder Infrastructure (Target 9.b)</strong>: Support domestic technology development, research, and innovation in developing countries, including by ensuring a conducive policy environment for industrial diversification and value addition to commodities.</li>
+        </ul>
+    </section>
+    <section>
+        <h2>Why SDG 9 is Important</h2>
+        <p>Achieving SDG 9 is critical for several reasons:</p>
+        <ul>
+            <li><strong>Economic Growth</strong>: Robust infrastructure and industrialization are key drivers of economic growth, providing jobs and increasing productivity.</li>
+            <li><strong>Innovation and Competitiveness</strong>: Promoting innovation fosters a competitive economy, which can lead to higher standards of living and technological advancements.</li>
+            <li><strong>Resilience to Disasters</strong>: Building resilient infrastructure helps communities withstand disasters and adapt to climate change, enhancing sustainability.</li>
+            <li><strong>Job Creation</strong>: Sustainable industrialization creates decent jobs, improving livelihoods and reducing poverty.</li>
+            <li><strong>Technological Advancement</strong>: Enhancing research and innovation capabilities leads to advancements in technology, supporting sustainable practices and economic development.</li>
+        </ul>
+    </section>
+    <section>
+        <h2>Current Challenges to Achieving SDG 9</h2>
+        <p>Despite progress, significant challenges remain:</p>
+        <ul>
+            <li><strong>Infrastructure Deficits</strong>: Many countries, especially developing nations, face significant deficits in infrastructure, limiting access to essential services.</li>
+            <li><strong>Funding Gaps</strong>: Limited access to financing for small-scale industries and infrastructure projects hinders growth and development.</li>
+            <li><strong>Technological Barriers</strong>: Lack of access to advanced technologies and research capabilities can stifle innovation and industrial growth.</li>
+            <li><strong>Environmental Impact</strong>: Industrialization can lead to environmental degradation if sustainable practices are not prioritized.</li>
+            <li><strong>Global Disparities</strong>: Significant disparities exist between developed and developing countries in terms of industrialization, infrastructure, and access to technology.</li>
+        </ul>
+    </section>
+    <section>
+        <h2>Conclusion</h2>
+        <p>SDG 9 is essential for achieving a sustainable future, as resilient infrastructure and sustainable industrialization are fundamental to economic development and social well-being. To achieve this goal, it is imperative to invest in infrastructure, promote innovation, and support small-scale industries. Collaborative efforts among governments, businesses, and civil society are crucial to overcoming challenges and ensuring inclusive and sustainable industrial growth.</p>
+    </div>
+    </section>
+    <script>
+        let isSpeaking = false;
+        const readButton = document.getElementById("ReadButton");
+  
+        readButton.addEventListener("click", function () {
+          if (!isSpeaking) {
+            const msg = new SpeechSynthesisUtterance();
+            msg.text = document.querySelector("body").innerText;
+            window.speechSynthesis.speak(msg);
+  
+            isSpeaking = true;
+            readButton.textContent = "Stop Reading";
+  
+            msg.onend = function () {
+              isSpeaking = false;
+              readButton.textContent = "Read Aloud";
+            };
+          } else {
+            window.speechSynthesis.cancel();
+  
+            isSpeaking = false;
+            readButton.textContent = "Read Aloud";
+          }
+        });
+  
+        window.addEventListener("beforeunload", function () {
+          if (speechSynthesis.speaking) {
+            speechSynthesis.cancel();
+          }
+        });
+      </script>
+</body>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #bbcfed;
+        background-image: url("https://envs.sh/BPt.jpg");
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+
+      form {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        background: rgba(0, 0, 0, 0.2);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        width: 300px;
+        backdrop-filter: blur(10px); /* Apply the blur effect */
+        -webkit-backdrop-filter: blur(10px);
+      }
+
+      h1 {
+        text-align: center;
+        color: #333;
+        margin-bottom: 20px;
+      }
+
+      input[type="text"],
+      input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        margin: 8px 0;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+
+      input[type="submit"] {
+        width: 100%;
+        background-color: #4caf50;
+        color: white;
+        padding: 10px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      input[type="submit"]:hover {
+        background-color: #45a049;
+      }
+
+      .message {
+        text-align: center;
+        color: red;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <form id="signupForm">
+      <h1>Sign Up</h1>
+      <input
+        type="text"
+        id="username"
+        name="username"
+        placeholder="Username"
+        required
+      />
+      <input type="text" id="email" name="email" placeholder="Email" required />
+      <input
+        type="text"
+        id="phone"
+        name="phone"
+        placeholder="Phone Number"
+        required
+      />
+      <input
+        type="password"
+        id="password"
+        name="password"
+        placeholder="Password"
+        required
+      />
+      <input
+        type="password"
+        id="password2"
+        name="password2"
+        placeholder="Confirm Password"
+        required
+      />
+      <input type="submit" value="Sign Up" />
+      <div style="padding: 9px">
+        already have an account?<a href="/login" style="padding: 8px">LOGIN</a>
+      </div>
+      <div class="message" id="message"></div>
+    </form>
+
+    <script>
+      document.getElementById("signupForm").onsubmit = async function (event) {
+        event.preventDefault();
+
+
+        const username = document.getElementById("username").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const phone = document.getElementById("phone").value.trim();
+        const password = document.getElementById("password").value;
+        const confirmPassword = document.getElementById("password2").value;
+
+        =
+        if (!username || !email || !phone || !password || !confirmPassword) {
+          alert("Please fill in all fields.");
+          return;
+        }
+
+        if (password !== confirmPassword) {
+          alert("Passwords do not match.");
+          return;
+        }
+
+        try {
+          const response = await fetch("http://127.0.0.1:5000/signup", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              username: username,
+              email: email,
+              phone: phone,
+              password: password,
+            }),
+          });
+
+
+          if (response.ok) {
+            const data = await response.json();
+            alert(data.message);
+            window.location.href = "/login";
+          } else {
+
+            const errorData = await response.json();
+            alert(errorData.message || "Signup failed. Please try again.");
+          }
+        } catch (error) {
+          console.error("There was a problem with the fetch operation:", error);
+          alert("An error occurred. Please try again later.");
+        }
+      };
+    </script>
+  </body>
+</html>

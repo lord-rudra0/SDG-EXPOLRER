@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SDG Quiz for Kids</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='Quiz1.css')}}" />
+</head>
+<body>
+    <header>
+        <h1>Learn & Play: Sustainable Development Goals Quiz</h1>
+        <p>Test your knowledge about how we can make the world a better place!</p>
+    </header>
+
+    <section id="quiz">
+        <h2>Sustainable Development Goals (SDG15 -Life on Land) Quiz</h2>
+        
+       
+        <div class="question">
+            <p><strong>1. What is the main objective of SDG 15 (Life on Land)?</strong></p>
+            <form id="question1">
+                <input type="radio" id="q1a" name="q1" value="right">
+                <label for="q1a">To protect, restore, and promote sustainable use of terrestrial ecosystems</label><br><br>
+                <input type="radio" id="q1b" name="q1" value="wrong">
+                <label for="q1b">To encourage deforestation</label><br><br>
+                <input type="radio" id="q1c" name="q1" value="wrong">
+                <label for="q1c">To eliminate all land-based species</label><br>
+            </form>
+        </div>
+        
+        <div class="question">
+            <p><strong>2. True or False: Deforestation contributes to climate change.</strong></p>
+            <form id="question2">
+                <input type="radio" id="q2true" name="q2" value="right">
+                <label for="q2true">True</label><br><br>
+                <input type="radio" id="q2false" name="q2" value="wrong">
+                <label for="q2false">False</label><br>
+            </form>
+        </div>
+        
+        <div class="question">
+            <p><strong>3. Which of the following is a key target of SDG 15?</strong></p>
+            <form id="question3">
+                <input type="radio" id="q3a" name="q3" value="wrong">
+                <label for="q3a">To promote the use of non-renewable resources</label><br><br>
+                <input type="radio" id="q3b" name="q3" value="right">
+                <label for="q3b">To combat desertification and restore degraded land</label><br><br>
+                <input type="radio" id="q3c" name="q3" value="wrong">
+                <label for="q3c">To restrict access to national parks</label><br>
+            </form>
+        </div>
+        
+        <div class="question">
+            <p><strong>4. How can individuals help protect terrestrial ecosystems?</strong></p>
+            <form id="question4">
+                <input type="radio" id="q4a" name="q4" value="wrong">
+                <label for="q4a">By participating in illegal logging</label><br><br>
+                <input type="radio" id="q4b" name="q4" value="right">
+                <label for="q4b">By supporting sustainable agriculture and conservation efforts</label><br><br>
+                <input type="radio" id="q4c" name="q4" value="wrong">
+                <label for="q4c">By ignoring local environmental issues</label><br>
+            </form>
+        </div>
+        
+        <div class="question">
+            <p><strong>5. What is a major benefit of biodiversity?</strong></p>
+            <form id="question5">
+                <input type="radio" id="q5a" name="q5" value="right">
+                <label for="q5a">It ensures ecosystem resilience and supports human well-being</label><br><br>
+                <input type="radio" id="q5b" name="q5" value="wrong">
+                <label for="q5b">It increases vulnerability to diseases</label><br><br>
+                <input type="radio" id="q5c" name="q5" value="wrong">
+                <label for="q5c">It has no effect on ecosystem health</label><br>
+            </form>
+        </div>
+         
+         <button type="button" onclick="checkAnswers()">Submit Answers</button>
+
+         
+         <div id="result"></div>
+     </section>
+ 
+    
+     <script src="{{ url_for('static', filename='sdg1.js') }}"></script>
+ </body>
+ </html>

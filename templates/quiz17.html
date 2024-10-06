@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SDG Quiz for Kids</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='Quiz1.css')}}" />
+</head>
+<body>
+    <header>
+        <h1>Learn & Play: Sustainable Development Goals Quiz</h1>
+        <p>Test your knowledge about how we can make the world a better place!</p>
+    </header>
+
+    <section id="quiz">
+        <h2>Sustainable Development Goals (SDG17 -Partnerships for the Goals) Quiz</h2>
+        
+       
+        <div class="question">
+            <p><strong>1. What is the main objective of SDG 17 (Partnerships for the Goals)?</strong></p>
+            <form id="question1">
+                <input type="radio" id="q1a" name="q1" value="right">
+                <label for="q1a">To revitalize the global partnership for sustainable development</label><br><br>
+                <input type="radio" id="q1b" name="q1" value="wrong">
+                <label for="q1b">To isolate countries from international cooperation</label><br><br>
+                <input type="radio" id="q1c" name="q1" value="wrong">
+                <label for="q1c">To limit financial support to developing countries</label><br>
+            </form>
+        </div>
+        
+        <div class="question">
+            <p><strong>2. True or False: Global partnerships are essential for achieving the Sustainable Development Goals (SDGs).</strong></p>
+            <form id="question2">
+                <input type="radio" id="q2true" name="q2" value="right">
+                <label for="q2true">True</label><br><br>
+                <input type="radio" id="q2false" name="q2" value="wrong">
+                <label for="q2false">False</label><br>
+            </form>
+        </div>
+        
+        <div class="question">
+            <p><strong>3. Which of the following is a target of SDG 17?</strong></p>
+            <form id="question3">
+                <input type="radio" id="q3a" name="q3" value="wrong">
+                <label for="q3a">To reduce international trade</label><br><br>
+                <input type="radio" id="q3b" name="q3" value="right">
+                <label for="q3b">To enhance international cooperation in science and technology</label><br><br>
+                <input type="radio" id="q3c" name="q3" value="wrong">
+                <label for="q3c">To discourage partnerships between nations</label><br>
+            </form>
+        </div>
+        
+        <div class="question">
+            <p><strong>4. How can strengthening local communities contribute to SDG 17?</strong></p>
+            <form id="question4">
+                <input type="radio" id="q4a" name="q4" value="wrong">
+                <label for="q4a">It isolates them from global efforts</label><br><br>
+                <input type="radio" id="q4b" name="q4" value="right">
+                <label for="q4b">It fosters collaboration and empowers them to contribute to global goals</label><br><br>
+                <input type="radio" id="q4c" name="q4" value="wrong">
+                <label for="q4c">It limits their access to resources</label><br>
+            </form>
+        </div>
+        
+        <div class="question">
+            <p><strong>5. What role do technology and innovation play in achieving SDG 17?</strong></p>
+            <form id="question5">
+                <input type="radio" id="q5a" name="q5" value="right">
+                <label for="q5a">They can facilitate knowledge sharing and improve resource management</label><br><br>
+                <input type="radio" id="q5b" name="q5" value="wrong">
+                <label for="q5b">They create barriers to communication between countries</label><br><br>
+                <input type="radio" id="q5c" name="q5" value="wrong">
+                <label for="q5c">They only benefit developed nations</label><br>
+            </form>
+        </div>
+         
+         <button type="button" onclick="checkAnswers()">Submit Answers</button>
+
+         
+         <div id="result"></div>
+     </section>
+ 
+    
+     <script src="{{ url_for('static', filename='sdg1.js') }}"></script>
+ </body>
+ </html>

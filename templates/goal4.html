@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SDG 4: Quality Education</title>
+    <link
+    rel="stylesheet"
+    href="{{url_for('static', filename='pagestyle.css')}}"
+  />
+</head>
+<body>
+    <nav class="bar">
+        <a href="/dashboard" id="ho"><button id="home" >Home</button></a>
+        <button id="ReadButton">Read Aloud</button>
+        <a href="/quiz4" id="qu"><button id="quiz"> QUIZ</button></a>
+       </nav>
+    <section>
+    <div class="container">
+        <h1>Sustainable Development Goal 4: Quality Education</h1>
+        <p>Sustainable Development Goal 4 (SDG 4) aims to ensure inclusive and equitable quality education and promote lifelong learning opportunities for all. Education is a fundamental human right and an essential driver of sustainable development. Quality education helps break the cycle of poverty, fosters social cohesion, and empowers individuals to achieve their full potential.</p>
+    </section>
+    <section>
+        <h2>Key Targets of SDG 4</h2>
+        <p>SDG 4 includes 10 targets that aim to ensure quality education for all. Here are some of the major targets:</p>
+        
+        <ul>
+            <li><strong>Ensure Inclusive and Equitable Quality Education (Target 4.1)</strong>: By 2030, ensure that all youth and a substantial proportion of adults, both men and women, achieve literacy and numeracy.</li>
+            <li><strong>Access to Early Childhood Development (Target 4.2)</strong>: Ensure that all girls and boys have access to quality early childhood development, care, and pre-primary education so that they are ready for primary education.</li>
+            <li><strong>Ensure Access to Quality Education at All Levels (Target 4.3)</strong>: Ensure equal access for all women and men to affordable and quality technical, vocational, and tertiary education, including university.</li>
+            <li><strong>Increase the Number of Youth and Adults with Relevant Skills (Target 4.4)</strong>: By 2030, increase the number of youth and adults who have relevant skills, including technical and vocational skills, for employment, decent jobs, and entrepreneurship.</li>
+            <li><strong>Eliminate Gender Disparities in Education (Target 4.5)</strong>: Eliminate gender disparities in education and ensure equal access to all levels of education and vocational training for the vulnerable, including persons with disabilities.</li>
+            <li><strong>Ensure Universal Literacy and Numeracy (Target 4.6)</strong>: By 2030, ensure that all youth and a substantial proportion of adults, both men and women, achieve literacy and numeracy.</li>
+            <li><strong>Ensure Quality Education Facilities (Target 4.a)</strong>: Build and upgrade education facilities that are child, disability, and gender-sensitive and provide safe, non-violent, inclusive, and effective learning environments for all.</li>
+            <li><strong>Increase the Supply of Qualified Teachers (Target 4.c)</strong>: By 2030, substantially increase the supply of qualified teachers, including through international cooperation for teacher training in developing countries.</li>
+            <li><strong>Promote Global Citizenship and Sustainable Development (Target 4.7)</strong>: Ensure that all learners acquire the knowledge and skills needed to promote sustainable development, including, among others, education for sustainable development and sustainable lifestyles.</li>
+            <li><strong>Substantially Increase Scholarships for Developing Countries (Target 4.b)</strong>: By 2020, substantially expand globally the number of scholarships available to developing countries for enrollment in higher education.</li>
+        </ul>
+    </section>
+    <section>
+        <h2>Why SDG 4 is Important</h2>
+        <p>Achieving SDG 4 is critical for several reasons:</p>
+        <ul>
+            <li><strong>Empowerment and Equity</strong>: Quality education empowers individuals and communities, leading to social and economic equality.</li>
+            <li><strong>Economic Growth</strong>: Education is a key driver of economic development, enhancing skills and increasing productivity.</li>
+            <li><strong>Health and Well-being</strong>: Education contributes to improved health outcomes, as educated individuals are more likely to make informed health decisions.</li>
+            <li><strong>Civic Participation</strong>: Education fosters civic engagement and participation in democratic processes, leading to more equitable societies.</li>
+            <li><strong>Addressing Global Challenges</strong>: Education equips individuals with the knowledge and skills needed to address global challenges such as climate change, inequality, and conflict.</li>
+        </ul>
+    </section>
+    <section>
+        <h2>Current Challenges to Achieving SDG 4</h2>
+        <p>Despite progress, significant challenges remain:</p>
+        <ul>
+            <li><strong>Access to Education</strong>: Millions of children and youth, especially in conflict-affected and impoverished areas, still lack access to quality education.</li>
+            <li><strong>Quality of Education</strong>: In many regions, the quality of education is low, with inadequate infrastructure, unqualified teachers, and insufficient learning resources.</li>
+            <li><strong>Disparities in Education</strong>: Gender, disability, and socio-economic status continue to create disparities in access to quality education.</li>
+            <li><strong>Impact of COVID-19</strong>: The COVID-19 pandemic has disrupted education systems globally, leading to widespread school closures and increased dropout rates.</li>
+            <li><strong>Technological Divide</strong>: Access to technology and the internet is uneven, impacting remote learning opportunities and digital literacy.</li>
+        </ul>
+    </section>
+    <section>
+        <h2>Conclusion</h2>
+        <p>SDG 4 is essential for achieving a sustainable future, as education is a powerful tool for transforming lives and societies. Ensuring quality education for all promotes social equity, economic growth, and global citizenship. To achieve this goal, a concerted effort from governments, educational institutions, communities, and international organizations is essential to address challenges and create inclusive and equitable education systems worldwide.</p>
+    </div>
+    </section>
+    <script>
+        let isSpeaking = false;
+        const readButton = document.getElementById("ReadButton");
+  
+        readButton.addEventListener("click", function () {
+          if (!isSpeaking) {
+            const msg = new SpeechSynthesisUtterance();
+            msg.text = document.querySelector("body").innerText;
+            window.speechSynthesis.speak(msg);
+  
+            isSpeaking = true;
+            readButton.textContent = "Stop Reading";
+  
+            msg.onend = function () {
+              isSpeaking = false;
+              readButton.textContent = "Read Aloud";
+            };
+          } else {
+            window.speechSynthesis.cancel();
+  
+            isSpeaking = false;
+            readButton.textContent = "Read Aloud";
+          }
+        });
+  
+        window.addEventListener("beforeunload", function () {
+          if (speechSynthesis.speaking) {
+            speechSynthesis.cancel();
+          }
+        });
+      </script>
+</body>
+</html>

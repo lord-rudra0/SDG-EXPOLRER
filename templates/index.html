@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+  <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KALKI - Sustainable Development Goals</title>
+  </head>
+
+  <body>
+    <header class="header">
+      <h1>KALKI</h1>
+      <input type="text" id="searchBar" placeholder="Search..." />
+      <nav>
+        <a href="/login"> <button id="signInButton">Sign In</button></a>
+        <a href="/signup"><button id="signUpButton">Sign Up</button></a>
+      </nav>
+    </header>
+
+    <div class="container">
+      <div class="goal">
+        <h2>No Poverty</h2>
+
+        <a href="/no-poverty">
+          <img src="https://envs.sh/BqM.jpg" alt="No Poverty" />
+        </a>
+      </div>
+
+      <div class="goal">
+        <h2>Zero Hunger</h2>
+
+        <a href="/zero-hunger"
+          ><img src="https://envs.sh/BqX.jpg" alt="Zero Hunger"
+        /></a>
+      </div>
+
+      <div class="goal">
+        <h2>Good Health</h2>
+
+        <a href="/good-health">
+          <img src="https://envs.sh/Bqy.jpg" alt="Good Health and Well-Being"
+        /></a>
+      </div>
+
+      <div class="goal">
+        <h2>Quality Education</h2>
+
+        <a href="/quality-education"
+          ><img src="https://envs.sh/Bq6.jpg" alt="Quality Education"
+        /></a>
+      </div>
+
+      <div class="goal">
+        <h2>Gender Equality</h2>
+
+        <a href="/gender-equality"
+          ><img src="https://envs.sh/BqV.jpg" alt="Gender Equality"
+        /></a>
+      </div>
+
+      <div class="goal">
+        <h2>Clean Water</h2>
+
+        <a href="/clean-water"
+          ><img src="https://envs.sh/B0l.jpg" alt="Clean Water and Sanitation"
+        /></a>
+      </div>
+
+      <div class="goal">
+        <h2>Affordable,Clean Energy</h2>
+
+        <a href="/affordable-energy">
+          <img src="https://envs.sh/B0k.jpg" alt="Affordable and Clean Energy"
+        /></a>
+      </div>
+
+      <div class="goal">
+        <h2>Decent Work,Growth</h2>
+
+        <a href="/decent-work">
+          <img
+            src="https://envs.sh/B08.jpg"
+            alt="Decent Work and Economic Growth"
+        /></a>
+      </div>
+
+      <div class="goal">
+        <h2>Industry,Infrastructure</h2>
+
+        <a href="/industry-innovation">
+          <img
+            src="https://envs.sh/B07.jpg"
+            alt="Industry, Innovation, and Infrastructure"
+        /></a>
+      </div>
+
+      <div class="goal">
+        <h2>Reduced Inequalities</h2>
+
+        <a href="/reduced-inequalities"
+          ><img src="https://envs.sh/B0o.jpg" alt="Reduced Inequalities"
+        /></a>
+      </div>
+
+      <div class="goal">
+        <h2>Sustainable Cities</h2>
+
+        <a href="/sustainable-cities">
+          <img
+            src="https://envs.sh/B0r.jpg"
+            alt="Sustainable Cities and Communities"
+        /></a>
+      </div>
+
+      <div class="goal">
+        <h2>Responsible Consumption</h2>
+
+        <a href="/responsible-consumption">
+          <img
+            src="https://envs.sh/B09.jpg"
+            alt="Responsible Consumption and Production"
+        /></a>
+      </div>
+
+      <div class="goal">
+        <h2>Climate Action</h2>
+
+        <a href="/climate-action"
+          ><img src="https://envs.sh/B0v.jpg" alt="Climate Action"
+        /></a>
+      </div>
+
+      <div class="goal">
+        <h2>Life Below Water</h2>
+
+        <a href="/life-below-water">
+          <img src="https://envs.sh/B0N.jpg" alt="Life Below Water" />
+        </a>
+      </div>
+
+      <div class="goal">
+        <h2>Life on Land</h2>
+        <a href="/life-on-land">
+          <img src="https://envs.sh/B0H.jpg" alt="Life on Land" />
+        </a>
+      </div>
+
+      <div class="goal">
+        <h2>Peace, Justice</h2>
+
+        <a href="/peace-justice"
+          ><img
+            src="https://envs.sh/B0X.jpg"
+            alt="Peace, Justice, and Strong Institutions"
+        /></a>
+      </div>
+
+      <div class="goal">
+        <h2>Partnerships for Goals</h2>
+        <a href="/partnership"
+          ><img src="https://envs.sh/B0-.jpg" alt="Partnerships for the Goals"
+        /></a>
+      </div>
+    </div>
+
+    <script>
+      const searchBar = document.getElementById("searchBar");
+      const signInButton = document.getElementById("signInButton");
+      const signUpButton = document.getElementById("signUpButton");
+
+      searchBar.addEventListener("keyup", (event) => {
+        const searchValue = event.target.value;
+
+        const goals = document.querySelectorAll(".goal");
+        goals.forEach((goal) => {
+          const goalTitle = goal.querySelector("h2").textContent;
+          if (goalTitle.toLowerCase().includes(searchValue.toLowerCase())) {
+            goal.style.display = "block";
+          } else {
+            goal.style.display = "none";
+          }
+        });
+      });
+
+      signInButton.addEventListener("click", () => {
+        console.log("Sign In");
+      });
+
+      signUpButton.addEventListener("click", () => {
+        console.log("Sign Up");
+      });
+    </script>
+    <footer class="footer">
+      <p>© 2024 KALKI</p>
+    </footer>
+  </body>
+</html>

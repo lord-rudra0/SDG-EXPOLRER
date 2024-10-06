@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SDG Adventure Game</title>
+    <style>
+      body {
+        font-family: "Arial", sans-serif;
+        background-color: #f0f8ff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        text-align: center;
+        position: relative;
+      }
+
+      .game-container {
+        background-color: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .stage {
+        display: none;
+      }
+
+      .stage.active {
+        display: block;
+      }
+
+      button {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #0056b3;
+      }
+
+      .confetti-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: none;
+        pointer-events: none;
+      }
+
+      .confetti {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        background-color: #f0f8ff;
+        animation: confetti-fall 5s linear infinite;
+      }
+
+      @keyframes confetti-fall {
+        0% {
+          transform: translateY(0);
+        }
+        100% {
+          transform: translateY(100vh) rotate(360deg);
+        }
+      }
+
+      h2 {
+        margin: 10px 0;
+      }
+
+      .sad-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: none;
+        pointer-events: none;
+      }
+
+      .sad-face {
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        background-image: url("https://envs.sh/Bsw.svg.png"); /* URL to a sad face image */
+        background-size: cover;
+        animation: sad-fall 3s forwards;
+      }
+
+      @keyframes sad-fall {
+        0% {
+          top: -30px;
+        }
+        100% {
+          top: 100vh;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="game-container">
+      <h1>Welcome to the SDG Adventure!</h1>
+      <h3>
+        Would you like to help our planet and learn about the Sustainable
+        Development Goals?
+      </h3>
+      <div id="start" class="stage active">
+        <button id="startButton">Yes, I want to play!</button>
+        <button id="noButton">No, maybe later</button>
+      </div>
+
+      <div id="stage1" class="stage">
+        <h2>Stage 1: Let's Recycle!</h2>
+        <p>You find a pile of recyclable materials. What will you do?</p>
+        <button class="action" data-action="recycle">
+          Recycle the materials
+        </button>
+        <button class="action" data-action="ignore">Ignore them</button>
+      </div>
+
+      <div id="stage2" class="stage">
+        <h2>Stage 2: Planting Trees</h2>
+        <p>
+          You see a barren area. It's time to plant some trees! What will you
+          do?
+        </p>
+        <button class="action" data-action="plant">Plant the trees</button>
+        <button class="action" data-action="walkaway">Walk away</button>
+      </div>
+
+      <div id="stage3" class="stage">
+        <h2>Stage 3: Cleaning Up</h2>
+        <p>You notice litter on the beach. What will you do?</p>
+        <button class="action" data-action="clean">Clean up the litter</button>
+        <button class="action" id="dashpage" data-action="ignore">
+          Ignore it
+        </button>
+      </div>
+
+      <div id="congratulations" class="stage">
+        <h2>Congratulations! You've made a difference!</h2>
+        <p>You helped the environment by making great choices!</p>
+        <button id="celebrateButton">Celebrate!</button>
+        <div class="confetti-container" id="confettiContainer"></div>
+      </div>
+
+      <div id="failure" class="stage">
+        <h2>Oh no! You missed the chance to help!</h2>
+        <p>It's important to make good choices to protect our planet.</p>
+        <button id="tryAgainButton">Try Again</button>
+      </div>
+    </div>
+
+    <script>
+      const stages = document.querySelectorAll(".stage");
+      const startButton = document.getElementById("startButton");
+      const noButton = document.getElementById("noButton");
+      const actionButtons = document.querySelectorAll(".action");
+      const confettiContainer = document.getElementById("confettiContainer");
+      const failureStage = document.getElementById("failure");
+
+      let currentStageIndex = 0;
+
+      startButton.addEventListener("click", function () {
+        showStage(1);
+      });
+
+      noButton.addEventListener("click", function () {
+        alert("We hope you'll change your mind and help us protect the SDGs!");
+      });
+
+      actionButtons.forEach((button) => {
+        button.addEventListener("click", function () {
+          if (
+            this.dataset.action === "recycle" ||
+            this.dataset.action === "plant" ||
+            this.dataset.action === "clean"
+          ) {
+            currentStageIndex++;
+            if (currentStageIndex < 3) {
+              showStage(currentStageIndex + 1);
+            } else {
+              showCongratulations();
+            }
+          } else {
+            showFailure();
+          }
+        });
+      });
+
+      function showStage(index) {
+        stages.forEach((stage, i) => {
+          stage.classList.remove("active");
+          if (i === index) {
+            stage.classList.add("active");
+          }
+        });
+      }
+
+      function showCongratulations() {
+        document.getElementById("congratulations").classList.add("active");
+        startConfetti();
+      }
+
+      function showFailure() {
+        failureStage.classList.add("active");
+        currentStageIndex = 0;
+      }
+
+      function startConfetti() {
+        confettiContainer.style.display = "block";
+        for (let i = 0; i < 100; i++) {
+          const confetti = document.createElement("div");
+          confetti.classList.add("confetti");
+          confetti.style.left = Math.random() * 100 + "vw";
+          confetti.style.animationDelay = Math.random() * 5 + "s";
+          confettiContainer.appendChild(confetti);
+        }
+      }
+
+      const homepage = document.getElementById("dashpage");
+      homepage.addEventListener("click", function () {
+        window.location.href = "/dashboard";
+      });
+      noButton.addEventListener("click", function () {
+        window.location.href = "/dashboard";
+      });
+
+      const tryAgainButton = document.getElementById("tryAgainButton");
+      tryAgainButton.addEventListener("click", function () {
+        showStage(1);
+        failureStage.classList.remove("active");
+        currentStageIndex = 0;
+      });
+
+      showStage(currentStageIndex);
+    </script>
+  </body>
+</html>

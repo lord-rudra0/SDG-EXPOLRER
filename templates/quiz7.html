@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SDG Quiz for Kids</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='Quiz1.css')}}" />
+</head>
+<body>
+    <header>
+        <h1>Learn & Play: Sustainable Development Goals Quiz</h1>
+        <p>Test your knowledge about how we can make the world a better place!</p>
+    </header>
+
+    <section id="quiz">
+        <h2>Sustainable Development Goals (SDG7-Affordable and Clean Energy) Quiz</h2>
+        
+       
+        <div class="question">
+            <p><strong>1. What is the primary goal of SDG 7 (Affordable and Clean Energy)?</strong></p>
+            <form id="question1">
+                <input type="radio" id="q1a" name="q1" value="right">
+                <label for="q1a">To provide access to electricity for all</label><br><br>
+                <input type="radio" id="q1b" name="q1" value="wrong">
+                <label for="q1b">To increase fossil fuel production</label><br><br>
+                <input type="radio" id="q1c" name="q1" value="wrong">
+                <label for="q1c"> To promote coal mining</label><br>
+            </form>
+        </div>
+
+        
+        <div class="question">
+            <p><strong>2. By what year does SDG 7 aim to ensure universal access to affordable, reliable, and modern energy services?</strong></p>
+            <form id="question2">
+                <input type="radio" id="q2a" name="q2" value="wrong">
+                <label for="q2a">2025</label><br><br>
+                <input type="radio" id="q2b" name="q2" value="right">
+                <label for="q2b">2030</label><br><br>
+                <input type="radio" id="q2c" name="q2" value="wrong">
+                <label for="q2c">2040</label><br>
+            </form>
+        </div>
+
+        
+        <div class="question">
+            <p><strong>3. Which of the following is a target of SDG 7?</strong></p>
+            <form id="question3">
+                <input type="radio" id="q3a" name="q3" value="right">
+                <label for="q3a">To increase the share of renewable energy in the global energy mix significantly</label><br><br>
+                <input type="radio" id="q3b" name="q3" value="wrong">
+                <label for="q3b">To encourage reliance on non-renewable energy sources</label><br><br>
+                <input type="radio" id="q3c" name="q3" value="wrong">
+                <label for="q3c">To reduce energy consumption in all sectors</label><br>
+            </form>
+        </div>
+        
+        <div class="question">
+            <p><strong>4. What is one of the key challenges to achieving SDG 7?</strong></p>
+            <form id="question3">
+                <input type="radio" id="q4a" name="q4" value="wrong">
+                <label for="q4a">The decline in renewable energy technology</label><br><br>
+                <input type="radio" id="q4b" name="q4" value="wrong">
+                <label for="q4b"> The abundance of coal resources worldwide</label><br><br>
+                <input type="radio" id="q4c" name="q4" value="right">
+                <label for="q4c"> The need for substantial investments in energy infrastructure, particularly in developing countries?</label><br>
+            </form>
+        </div>
+        
+        <div class="question">
+            <p><strong>5. How does energy efficiency contribute to achieving SDG 7?</strong></p>
+            <form id="question3">
+                <input type="radio" id="q5a" name="q5" value="right">
+                <label for="q5a">It decreases the overall energy consumption and reduces greenhouse gas emissions</label><br><br>
+                <input type="radio" id="q5b" name="q5" value="wrong">
+                <label for="q5b"> It increases the cost of energy for consumers</label><br><br>
+                <input type="radio" id="q5c" name="q5" value="wrong">
+                <label for="q5c"> It promotes the use of outdated technologies</label><br>
+            </form>
+        </div>
+         
+         <button type="button" onclick="checkAnswers()">Submit Answers</button>
+
+         
+         <div id="result"></div>
+     </section>
+ 
+    
+     <script src="{{ url_for('static', filename='sdg1.js') }}"></script>
+ </body>
+ </html>

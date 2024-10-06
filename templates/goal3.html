@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SDG 3: Good Health and Well-being</title>
+    <link
+    rel="stylesheet"
+    href="{{url_for('static', filename='pagestyle.css')}}"
+  />
+    </style>
+</head>
+<body>
+    <nav class="bar">
+        <a href="/dashboard" id="ho"><button id="home" >Home</button></a>
+        <button id="ReadButton">Read Aloud</button>
+        <a href="/quiz3" id="qu"><button id="quiz"> QUIZ</button></a>
+       </nav> 
+<section>
+    <div class="container">
+        <h1>Sustainable Development Goal 3: Good Health and Well-being</h1>
+        <p>SDG 3 aims to ensure healthy lives and promote well-being for all at all ages. Health is fundamental to human happiness, well-being, and economic progress, as healthy populations are more productive and contribute to overall societal and economic growth.</p>
+    </section>
+<section>
+        <h2>Key Targets of SDG 3</h2>
+        <p>SDG 3 includes 13 targets that aim to address various aspects of health and well-being. Here are some of the major targets:</p>
+    
+        <ul>
+            <li><strong>Reduce Maternal Mortality (Target 3.1)</strong>: By 2030, reduce the global maternal mortality ratio to less than 70 per 100,000 live births. This involves improving access to quality prenatal and postnatal care.</li>
+            <li><strong>End Preventable Deaths of Newborns and Children (Target 3.2)</strong>: End preventable deaths of newborns and children under 5 years of age by addressing causes like pneumonia, diarrhea, and malnutrition.</li>
+            <li><strong>Fight Infectious Diseases (Target 3.3)</strong>: End epidemics of AIDS, tuberculosis, malaria, and neglected tropical diseases, while combating hepatitis, water-borne diseases, and other communicable diseases by 2030.</li>
+            <li><strong>Reduce Premature Mortality from Non-communicable Diseases (Target 3.4)</strong>: By 2030, reduce by one-third premature mortality from non-communicable diseases (NCDs) through prevention, treatment, and promotion of mental health and well-being, focusing on lifestyle changes.</li>
+            <li><strong>Prevent and Treat Substance Abuse (Target 3.5)</strong>: Strengthen the prevention and treatment of substance abuse, including narcotic drug abuse and harmful use of alcohol, through education and healthcare access.</li>
+            <li><strong>Reduce Road Injuries and Deaths (Target 3.6)</strong>: By 2030, halve the number of global deaths and injuries from road traffic accidents through safer road infrastructure and improved vehicle safety.</li>
+            <li><strong>Ensure Universal Access to Sexual and Reproductive Health-care Services (Target 3.7)</strong>: Ensure universal access to sexual and reproductive health-care services, including for family planning, information, and education, and the integration of reproductive health into national strategies and programs by 2030.</li>
+            <li><strong>Achieve Universal Health Coverage (Target 3.8)</strong>: Achieve universal health coverage (UHC), including financial risk protection, access to quality essential health-care services, and access to safe, effective, quality, and affordable essential medicines and vaccines for all.</li>
+            <li><strong>Reduce Deaths from Hazardous Chemicals and Pollution (Target 3.9)</strong>: By 2030, substantially reduce the number of deaths and illnesses from hazardous chemicals and air, water, and soil pollution and contamination.</li>
+            <li><strong>Strengthen Health Workforce and Health Systems (Target 3.c)</strong>: Substantially increase health financing and the recruitment, development, training, and retention of the health workforce in developing countries, especially in least developed countries and small island developing states.</li>
+            <li><strong>Research and Development for New Vaccines and Medicines (Target 3.b)</strong>: Support the research and development of vaccines and medicines for diseases that primarily affect developing countries, provide access to affordable essential medicines and vaccines.</li>
+        </ul>
+    </section>
+    <section>
+        <h2>Why SDG 3 is Important</h2>
+        <p>Achieving SDG 3 is critical for several reasons:</p>
+        <ul>
+            <li><strong>Global Health Challenges</strong>: Many countries face significant health challenges, such as the spread of infectious diseases, rising rates of chronic diseases, and high maternal and infant mortality rates. These challenges disproportionately affect low-income countries.</li>
+            <li><strong>Economic Impact</strong>: Healthy populations are more productive, contributing to stronger economies. Poor health can lead to increased healthcare costs and reduced productivity.</li>
+            <li><strong>Intersectionality</strong>: SDG 3 is closely connected with other SDGs, such as poverty reduction (SDG 1), clean water and sanitation (SDG 6), and gender equality (SDG 5), as they all influence global health outcomes.</li>
+            <li><strong>Addressing Inequalities</strong>: Achieving good health and well-being is essential to addressing inequalities, as marginalized communities often suffer from poorer health outcomes.</li>
+        </ul>
+</section>
+<section>
+        <h2>Current Challenges to Achieving SDG 3</h2>
+        <p>Despite progress, significant challenges remain:</p>
+        <ul>
+            <li><strong>Inadequate Health Infrastructure</strong>: Many countries, particularly low- and middle-income nations, have insufficient healthcare systems, making it difficult to provide necessary services.</li>
+            <li><strong>Growing Disparities</strong>: Access to healthcare is often inequitable, with marginalized groups facing barriers to receiving quality care.</li>
+            <li><strong>Rise of Non-communicable Diseases</strong>: The global burden of NCDs such as heart disease, diabetes, and cancer continues to rise, often due to lifestyle changes and urbanization.</li>
+            <li><strong>Epidemics and Pandemics</strong>: Outbreaks like COVID-19 have disrupted healthcare services, leading to setbacks in achieving health goals worldwide.</li>
+            <li><strong>Health Care Costs</strong>: Rising healthcare costs make universal health coverage challenging, particularly in countries with limited resources.</li>
+            <li><strong>Mental Health Issues</strong>: Mental health is often neglected, leading to significant challenges and a lack of resources to address these needs globally.</li>
+        </ul>
+    </section>
+<section>
+        <h2>Conclusion</h2>
+        <p>SDG 3 is a vital part of the 2030 Agenda for Sustainable Development because it directly affects the well-being of individuals, families, and communities. Promoting good health is a foundation for social and economic development. Achieving this goal will contribute to a healthier, more productive, and more equitable world. Collective action and commitment from governments, organizations, and communities are essential to realizing these targets and improving health outcomes worldwide.</p>
+    </div>
+</section>
+<script>
+    let isSpeaking = false;
+    const readButton = document.getElementById("ReadButton");
+
+    readButton.addEventListener("click", function () {
+      if (!isSpeaking) {
+        const msg = new SpeechSynthesisUtterance();
+        msg.text = document.querySelector("body").innerText;
+        window.speechSynthesis.speak(msg);
+
+        isSpeaking = true;
+        readButton.textContent = "Stop Reading";
+
+        msg.onend = function () {
+          isSpeaking = false;
+          readButton.textContent = "Read Aloud";
+        };
+      } else {
+        window.speechSynthesis.cancel();
+
+        isSpeaking = false;
+        readButton.textContent = "Read Aloud";
+      }
+    });
+
+    window.addEventListener("beforeunload", function () {
+      if (speechSynthesis.speaking) {
+        speechSynthesis.cancel();
+      }
+    });
+  </script>
+</body>
+</html>

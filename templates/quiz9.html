@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SDG Quiz for Kids</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='Quiz1.css')}}" />
+</head>
+<body>
+    <header>
+        <h1>Learn & Play: Sustainable Development Goals Quiz</h1>
+        <p>Test your knowledge about how we can make the world a better place!</p>
+    </header>
+
+    <section id="quiz">
+        <h2>Sustainable Development Goals (SDG 9 - Industry, Innovation, and Infrastructure) Quiz</h2>
+
+        <div class="question">
+            <p><strong>1. What is the main goal of SDG 9?</strong></p>
+            <form id="question1">
+                <input type="radio" id="q1a" name="q1" value="right">
+                <label for="q1a">To build resilient infrastructure, promote inclusive and sustainable industrialization, and foster innovation</label><br><br>
+                <input type="radio" id="q1b" name="q1" value="wrong">
+                <label for="q1b">To promote traditional manufacturing methods only</label><br><br>
+                <input type="radio" id="q1c" name="q1" value="wrong">
+                <label for="q1c">To focus solely on agricultural development</label><br>
+            </form>
+        </div>
+
+        <div class="question">
+            <p><strong>2. Which of the following is a target of SDG 9?</strong></p>
+            <form id="question2">
+                <input type="radio" id="q2a" name="q2" value="right">
+                <label for="q2a">To enhance scientific research and upgrade the technological capabilities of industrial sectors</label><br><br>
+                <input type="radio" id="q2b" name="q2" value="wrong">
+                <label for="q2b">To reduce investments in infrastructure</label><br><br>
+                <input type="radio" id="q2c" name="q2" value="wrong">
+                <label for="q2c">To limit access to innovative technologies</label><br>
+            </form>
+        </div>
+
+        <div class="question">
+            <p><strong>3. What is a key benefit of sustainable industrialization?</strong></p>
+            <form id="question3">
+                <input type="radio" id="q3a" name="q3" value="right">
+                <label for="q3a">It creates jobs and promotes economic growth</label><br><br>
+                <input type="radio" id="q3b" name="q3" value="wrong">
+                <label for="q3b">It leads to higher pollution levels</label><br><br>
+                <input type="radio" id="q3c" name="q3" value="wrong">
+                <label for="q3c">It reduces the availability of goods</label><br>
+            </form>
+        </div>
+
+        <div class="question">
+            <p><strong>4. Why is investing in infrastructure important for economic development?</strong></p>
+            <form id="question4">
+                <input type="radio" id="q4a" name="q4" value="wrong">
+                <label for="q4a">It creates obstacles for trade</label><br><br>
+                <input type="radio" id="q4b" name="q4" value="right">
+                <label for="q4b">It facilitates transportation, trade, and communication</label><br><br>
+                <input type="radio" id="q4c" name="q4" value="wrong">
+                <label for="q4c">It limits access to markets</label><br>
+            </form>
+        </div>
+
+        <div class="question">
+            <p><strong>5. What role does innovation play in achieving SDG 9?</strong></p>
+            <form id="question5">
+                <input type="radio" id="q5a" name="q5" value="wrong">
+                <label for="q5a">Innovation hinders progress in industry</label><br><br>
+                <input type="radio" id="q5b" name="q5" value="right">
+                <label for="q5b">Innovation drives efficiency and sustainability in industrial processes</label><br><br>
+                <input type="radio" id="q5c" name="q5" value="wrong">
+                <label for="q5c">Innovation has no impact on economic growth</label><br>
+            </form>
+        </div>
+         
+         <button type="button" onclick="checkAnswers()">Submit Answers</button>
+
+         
+         <div id="result"></div>
+     </section>
+ 
+    
+     <script src="{{ url_for('static', filename='sdg1.js') }}"></script>
+ </body>
+ </html>

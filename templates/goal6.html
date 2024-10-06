@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SDG 6: Clean Water and Sanitation</title>
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='pagestyle.css')}}"
+    />
+</head>
+<body>
+    <nav class="bar">
+        <a href="/dashboard" id="ho"><button id="home" >Home</button></a>
+        <button id="ReadButton">Read Aloud</button>
+        <a href="/quiz6" id="qu"><button id="quiz"> QUIZ</button></a>
+       </nav>
+    <section>
+    <div class="container">
+        <h1>Sustainable Development Goal 6: Clean Water and Sanitation</h1>
+        <p>Sustainable Development Goal 6 (SDG 6) aims to ensure availability and sustainable management of water and sanitation for all. Clean water and adequate sanitation are vital for human health, environmental sustainability, and economic development. Access to safe drinking water and proper sanitation facilities is fundamental for reducing waterborne diseases and promoting health and well-being.</p>
+    </section>
+    <section>
+        <h2>Key Targets of SDG 6</h2>
+        <p>SDG 6 includes 8 targets that focus on various aspects of water and sanitation. Here are the major targets:</p>
+        
+        <ul>
+            <li><strong>Universal Access to Safe and Affordable Drinking Water (Target 6.1)</strong>: By 2030, ensure universal access to safe and affordable drinking water for all.</li>
+            <li><strong>Access to Adequate and Equitable Sanitation (Target 6.2)</strong>: By 2030, achieve access to adequate and equitable sanitation and hygiene facilities for all, with a focus on vulnerable populations, including women and girls.</li>
+            <li><strong>Water Quality and Pollution (Target 6.3)</strong>: Improve water quality by reducing pollution, minimizing the release of hazardous chemicals and materials, and substantially increasing water-use efficiency across all sectors.</li>
+            <li><strong>Water-Related Ecosystems (Target 6.6)</strong>: Protect and restore water-related ecosystems, such as rivers, wetlands, and lakes, to maintain their functions and services.</li>
+            <li><strong>International Cooperation (Target 6.a)</strong>: Strengthen the participation of local communities in improving water and sanitation management.</li>
+            <li><strong>Integrated Water Resources Management (Target 6.b)</strong>: Support and strengthen the participation of local communities in water and sanitation management.</li>
+            <li><strong>Wastewater Treatment (Target 6.3)</strong>: Substantially increase water-use efficiency to ensure sustainable water withdrawals and supply.</li>
+            <li><strong>Implement Integrated Water Resources Management (Target 6.5)</strong>: Implement integrated water resources management at all levels, including transboundary cooperation as appropriate.</li>
+        </ul>
+    </section>
+    <section>
+        <h2>Why SDG 6 is Important</h2>
+        <p>Achieving SDG 6 is critical for several reasons:</p>
+        <ul>
+            <li><strong>Health Benefits</strong>: Access to clean water and sanitation reduces the risk of waterborne diseases, improving overall public health and reducing healthcare costs.</li>
+            <li><strong>Environmental Protection</strong>: Sustainable water management protects ecosystems and biodiversity, ensuring that natural resources are preserved for future generations.</li>
+            <li><strong>Economic Development</strong>: Water is essential for agriculture, industry, and energy production. Proper management and access to water resources contribute to economic growth and stability.</li>
+            <li><strong>Gender Equality</strong>: Improved access to sanitation facilities can significantly impact women and girls, enabling them to pursue education and employment opportunities without the barriers of inadequate facilities.</li>
+            <li><strong>Food Security</strong>: Water scarcity can impact food production and security. Sustainable management of water resources ensures that agricultural needs are met, supporting food security.</li>
+        </ul>
+    </section>
+    <section>
+        <h2>Current Challenges to Achieving SDG 6</h2>
+        <p>Despite progress, significant challenges remain:</p>
+        <ul>
+            <li><strong>Water Scarcity</strong>: Over 2 billion people live in countries experiencing high water stress, making access to clean water a significant challenge.</li>
+            <li><strong>Poor Water Quality</strong>: Pollution from industrial and agricultural activities continues to contaminate water sources, affecting water quality and safety.</li>
+            <li><strong>Inadequate Infrastructure</strong>: Many regions lack the necessary infrastructure for safe water supply and sanitation facilities, particularly in rural and marginalized communities.</li>
+            <li><strong>Climate Change</strong>: Climate change exacerbates water scarcity and affects the availability and distribution of water resources, posing significant risks to communities and ecosystems.</li>
+            <li><strong>Financial Constraints</strong>: Many countries struggle to finance the necessary investments in water and sanitation infrastructure, limiting access and quality of services.</li>
+        </ul>
+    </section>
+    <section>
+        <h2>Conclusion</h2>
+        <p>SDG 6 is essential for achieving a sustainable future, as clean water and sanitation are fundamental to health, well-being, and economic development. To achieve this goal, it is imperative to address the challenges associated with water scarcity, quality, and infrastructure. Collaborative efforts from governments, international organizations, and local communities are necessary to ensure sustainable management of water resources and equitable access to clean water and sanitation for all.</p>
+    </div>
+    </section>
+    <script>
+        let isSpeaking = false;
+        const readButton = document.getElementById("ReadButton");
+  
+        readButton.addEventListener("click", function () {
+          if (!isSpeaking) {
+            const msg = new SpeechSynthesisUtterance();
+            msg.text = document.querySelector("body").innerText;
+            window.speechSynthesis.speak(msg);
+  
+            isSpeaking = true;
+            readButton.textContent = "Stop Reading";
+  
+            msg.onend = function () {
+              isSpeaking = false;
+              readButton.textContent = "Read Aloud";
+            };
+          } else {
+            window.speechSynthesis.cancel();
+  
+            isSpeaking = false;
+            readButton.textContent = "Read Aloud";
+          }
+        });
+  
+        window.addEventListener("beforeunload", function () {
+          if (speechSynthesis.speaking) {
+            speechSynthesis.cancel();
+          }
+        });
+      </script>
+</body>
+</html>

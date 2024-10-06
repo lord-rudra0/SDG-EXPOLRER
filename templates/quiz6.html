@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SDG Quiz for Kids</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='Quiz1.css')}}" />
+</head>
+<body>
+    <header>
+        <h1>Learn & Play: Sustainable Development Goals Quiz</h1>
+        <p>Test your knowledge about how we can make the world a better place!</p>
+    </header>
+
+    <section id="quiz">
+        <h2>Sustainable Development Goals (SDG6-Clean Water and Sanitation) Quiz</h2>
+        
+       
+        <div class="question">
+            <p><strong>1. What is the primary goal of SDG 6 (Clean Water and Sanitation)?</strong></p>
+            <form id="question1">
+                <input type="radio" id="q1a" name="q1" value="right">
+                <label for="q1a">To ensure everyone has access to clean water and sanitation</label><br><br>
+                <input type="radio" id="q1b" name="q1" value="wrong">
+                <label for="q1b">To provide free bottled water for all</label><br><br>
+                <input type="radio" id="q1c" name="q1" value="wrong">
+                <label for="q1c"> To reduce water consumption in urban areas</label><br>
+            </form>
+        </div>
+
+        
+        <div class="question">
+            <p><strong>2. Which of the following is a target under SDG 6 related to water quality?</strong></p>
+            <form id="question2">
+                <input type="radio" id="q2a" name="q2" value="wrong">
+                <label for="q2a">To reduce the number of water treatment facilities globally</label><br><br>
+                <input type="radio" id="q2b" name="q2" value="right">
+                <label for="q2b">To improve water quality by reducing pollution, eliminating dumping, and minimizing the release of hazardous chemicals</label><br><br>
+                <input type="radio" id="q2c" name="q2" value="wrong">
+                <label for="q2c">To increase the amount of untreated wastewater</label><br>
+            </form>
+        </div>
+
+        
+        <div class="question">
+            <p><strong>3. What is one of the main barriers to achieving universal access to clean water and sanitation?</strong></p>
+            <form id="question3">
+                <input type="radio" id="q3a" name="q3" value="wrong">
+                <label for="q3a">The overuse of desalination plants</label><br><br>
+                <input type="radio" id="q3b" name="q3" value="right">
+                <label for="q3b">The lack of proper infrastructure and investments in many developing countries</label><br><br>
+                <input type="radio" id="q3c" name="q3" value="wrong">
+                <label for="q3c">The overproduction of water in rural areas</label><br>
+            </form>
+        </div>
+        
+        <div class="question">
+            <p><strong>4. How does climate change pose a challenge to achieving SDG 6?</strong></p>
+            <form id="question3">
+                <input type="radio" id="q4a" name="q4" value="wrong">
+                <label for="q4a">It increases access to clean water in drought-affected areas</label><br><br>
+                <input type="radio" id="q4b" name="q4" value="right">
+                <label for="q4b"> It disrupts water availability and quality through more frequent droughts, floods, and unpredictable weather patterns</label><br><br>
+                <input type="radio" id="q4c" name="q4" value="wrong">
+                <label for="q4c"> It has no impact on water and sanitation systems</label><br>
+            </form>
+        </div>
+        
+        <div class="question">
+            <p><strong>5. Which of the following actions can help achieve sustainable water management under SDG 6?</strong></p>
+            <form id="question3">
+                <input type="radio" id="q5a" name="q5" value="wrong">
+                <label for="q5a">Increasing the amount of untreated wastewater released into rivers</label><br><br>
+                <input type="radio" id="q5b" name="q5" value="right">
+                <label for="q5b"> Promoting water reuse and improving the efficiency of water usage in agriculture and industry</label><br><br>
+                <input type="radio" id="q5c" name="q5" value="wrong">
+                <label for="q5c"> Reducing the number of water conservation projects</label><br>
+            </form>
+        </div>
+         
+         <button type="button" onclick="checkAnswers()">Submit Answers</button>
+
+         
+         <div id="result"></div>
+     </section>
+ 
+    
+     <script src="{{ url_for('static', filename='sdg1.js') }}"></script>
+ </body>
+ </html>

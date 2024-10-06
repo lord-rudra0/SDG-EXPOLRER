@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SDG 8: Decent Work and Economic Growth</title>
+    <link
+    rel="stylesheet"
+    href="{{url_for('static', filename='pagestyle.css')}}"
+  />
+</head>
+<body>
+    <nav class="bar">
+        <a href="/dashboard" id="ho"><button id="home" >Home</button></a>
+        <button id="ReadButton">Read Aloud</button>
+        <a href="/quiz8" id="qu"><button id="quiz"> QUIZ</button></a>
+       </nav>
+    <section>
+    <div class="container">
+        <h1>Sustainable Development Goal 8: Decent Work and Economic Growth</h1>
+        <p>Sustainable Development Goal 8 (SDG 8) aims to promote sustained, inclusive, and sustainable economic growth, full and productive employment, and decent work for all. Achieving this goal is crucial for ensuring that all individuals can benefit from economic progress, leading to improved standards of living and social equity.</p>
+    </section>
+    <section>
+        <h2>Key Targets of SDG 8</h2>
+        <p>SDG 8 includes 12 targets that focus on various aspects of economic growth and decent work. Here are the major targets:</p>
+        
+        <ul>
+            <li><strong>Economic Growth (Target 8.1)</strong>: Sustain per capita economic growth in accordance with national circumstances, and at least 7% gross domestic product growth per annum in the least developed countries.</li>
+            <li><strong>Productive Employment (Target 8.2)</strong>: Achieve higher levels of economic productivity through diversification, technological upgrading, and innovation.</li>
+            <li><strong>Promote Development-oriented Policies (Target 8.3)</strong>: Promote development-oriented policies that encourage entrepreneurship and job creation.</li>
+            <li><strong>Decent Work for Youth (Target 8.6)</strong>: Substantially reduce the proportion of youth not in employment, education, or training.</li>
+            <li><strong>Global Youth Employment (Target 8.7)</strong>: Take immediate and effective measures to eradicate forced labor, end modern slavery and human trafficking, and secure the prohibition and elimination of the worst forms of child labor.</li>
+            <li><strong>Improve Access to Financial Services (Target 8.10)</strong>: Strengthen the capacity of domestic financial institutions to encourage and expand access to banking, insurance, and financial services for all.</li>
+            <li><strong>Promote Sustainability in Economic Growth (Target 8.4)</strong>: Improve progressively, through 2030, global resource efficiency in consumption and production and endeavor to decouple economic growth from environmental degradation.</li>
+            <li><strong>Full and Productive Employment (Target 8.5)</strong>: Achieve full and productive employment and decent work for all women and men, including young people and persons with disabilities.</li>
+        </ul>
+    </section>
+    <section>
+        <h2>Why SDG 8 is Important</h2>
+        <p>Achieving SDG 8 is critical for several reasons:</p>
+        <ul>
+            <li><strong>Reduction of Poverty</strong>: Decent work opportunities contribute to poverty alleviation by providing individuals with the means to support themselves and their families.</li>
+            <li><strong>Economic Stability</strong>: Promoting sustained economic growth enhances stability and resilience in economies, enabling countries to withstand external shocks.</li>
+            <li><strong>Social Inclusion</strong>: Fostering decent work leads to social inclusion and equality, allowing marginalized groups to participate fully in the economy.</li>
+            <li><strong>Innovation and Competitiveness</strong>: Encouraging innovation and entrepreneurship drives competitiveness, which is essential for economic growth.</li>
+            <li><strong>Environmental Sustainability</strong>: Promoting sustainable economic growth helps to protect the environment and conserve natural resources for future generations.</li>
+        </ul>
+    </section>
+    <section>
+        <h2>Current Challenges to Achieving SDG 8</h2>
+        <p>Despite progress, significant challenges remain:</p>
+        <ul>
+            <li><strong>Unemployment and Underemployment</strong>: Many people, particularly youth, face high unemployment rates or are stuck in low-quality jobs.</li>
+            <li><strong>Informal Employment</strong>: A large portion of the workforce is engaged in informal employment, lacking protections and benefits associated with formal jobs.</li>
+            <li><strong>Inequality in the Labor Market</strong>: Gender, racial, and economic inequalities persist in the labor market, limiting opportunities for many individuals.</li>
+            <li><strong>Economic Disruption</strong>: Global crises, such as the COVID-19 pandemic, have significantly disrupted economies, leading to job losses and increased poverty.</li>
+            <li><strong>Technological Disruption</strong>: Rapid technological advancements can lead to job displacement, particularly for low-skilled workers, exacerbating inequality.</li>
+        </ul>
+    </section>
+    <section>
+        <h2>Conclusion</h2>
+        <p>SDG 8 is essential for achieving a sustainable future, as decent work and economic growth are fundamental to improving living standards and reducing poverty. To achieve this goal, it is imperative to foster inclusive economic growth, create quality jobs, and promote entrepreneurship. Collaborative efforts among governments, businesses, and civil society are crucial to overcome the challenges and ensure that all individuals have access to decent work and economic opportunities.</p>
+    </div>
+    </section>
+    <script>
+        let isSpeaking = false;
+        const readButton = document.getElementById("ReadButton");
+  
+        readButton.addEventListener("click", function () {
+          if (!isSpeaking) {
+            const msg = new SpeechSynthesisUtterance();
+            msg.text = document.querySelector("body").innerText;
+            window.speechSynthesis.speak(msg);
+  
+            isSpeaking = true;
+            readButton.textContent = "Stop Reading";
+  
+            msg.onend = function () {
+              isSpeaking = false;
+              readButton.textContent = "Read Aloud";
+            };
+          } else {
+            window.speechSynthesis.cancel();
+  
+            isSpeaking = false;
+            readButton.textContent = "Read Aloud";
+          }
+        });
+  
+        window.addEventListener("beforeunload", function () {
+          if (speechSynthesis.speaking) {
+            speechSynthesis.cancel();
+          }
+        });
+      </script>
+</body>
+</html>

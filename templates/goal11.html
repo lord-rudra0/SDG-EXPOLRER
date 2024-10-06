@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SDG 11: Sustainable Cities and Communities</title>
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='pagestyle.css')}}"
+    />
+</head>
+<body>
+    <nav class="bar">
+        <a href="/dashboard" id="ho"><button id="home" >Home</button></a>
+        <button id="ReadButton">Read Aloud</button>
+        <a href="/quiz11" id="qu"><button id="quiz"> QUIZ</button></a>
+       </nav>
+    <section>
+    <div class="container">
+        <h1>Sustainable Development Goal 11: Sustainable Cities and Communities</h1>
+        <p>Sustainable Development Goal 11 (SDG 11) aims to make cities and human settlements inclusive, safe, resilient, and sustainable. With rapid urbanization and increasing population density, it is essential to create sustainable urban environments that provide opportunities for all and reduce environmental impact.</p>
+    </section>
+    <section>
+        <h2>Key Targets of SDG 11</h2>
+        <p>SDG 11 includes 10 specific targets focused on various aspects of urban sustainability:</p>
+        
+        <ul>
+            <li><strong>Affordable Housing (Target 11.1)</strong>: Ensure access for all to adequate, safe, and affordable housing and basic services, and upgrade slum settlements.</li>
+            <li><strong>Transportation Systems (Target 11.2)</strong>: Provide access to safe, affordable, accessible, and sustainable transport systems for all, with special attention to the needs of those in vulnerable situations.</li>
+            <li><strong>Urbanization (Target 11.3)</strong>: Enhance inclusive and sustainable urbanization and capacity for participatory, integrated, and sustainable human settlement planning and management.</li>
+            <li><strong>Environmental Impact (Target 11.4)</strong>: Strengthen efforts to protect and safeguard the world’s cultural and natural heritage.</li>
+            <li><strong>Disaster Resilience (Target 11.5)</strong>: Reduce the number of deaths and the number of people affected by disasters, and substantially decrease the direct economic losses relative to global gross domestic product.</li>
+            <li><strong>Waste Management (Target 11.6)</strong>: Reduce the adverse per capita environmental impact of cities, including by paying special attention to air quality and municipal and other waste management.</li>
+            <li><strong>Green Spaces (Target 11.7)</strong>: Provide universal access to safe, inclusive, and accessible green and public spaces, in particular for women and children, older persons, and persons with disabilities.</li>
+            <li><strong>Linking Urban and Rural Areas (Target 11.a)</strong>: Support positive economic, social, and environmental links between urban, peri-urban, and rural areas.</li>
+            <li><strong>International Cooperation (Target 11.b)</strong>: Increase the number of cities and human settlements adopting and implementing integrated policies and plans toward inclusion, resource efficiency, and climate change mitigation and adaptation.</li>
+            <li><strong>Data Collection (Target 11.c)</strong>: Support least developed countries, including through financial and technical assistance, in building sustainable and resilient buildings utilizing local materials.</li>
+        </ul>
+    </section>
+    <section>
+        <h2>Why SDG 11 is Important</h2>
+        <p>Achieving SDG 11 is crucial for several reasons:</p>
+        <ul>
+            <li><strong>Urbanization Challenges</strong>: With more than half of the world’s population living in urban areas, sustainable development in cities is essential for overall global sustainability.</li>
+            <li><strong>Environmental Impact</strong>: Cities are major contributors to environmental degradation, making it imperative to adopt sustainable practices to mitigate climate change and protect ecosystems.</li>
+            <li><strong>Social Inclusion</strong>: Ensuring access to safe housing, transportation, and public services is vital for social equity and community well-being.</li>
+            <li><strong>Disaster Preparedness</strong>: Resilient cities are better equipped to handle disasters, protecting lives and minimizing economic losses.</li>
+            <li><strong>Economic Growth</strong>: Sustainable urban development fosters economic growth, innovation, and job creation, contributing to a better quality of life for all residents.</li>
+        </ul>
+    </section>
+    <section>
+        <h2>Current Challenges to Achieving SDG 11</h2>
+        <p>Despite progress, significant challenges remain:</p>
+        <ul>
+            <li><strong>Rapid Urbanization</strong>: Fast-paced urban growth can outstrip infrastructure development, leading to inadequate housing and services.</li>
+            <li><strong>Poverty and Inequality</strong>: Many urban areas are characterized by significant inequality, with marginalized communities lacking access to basic services.</li>
+            <li><strong>Environmental Degradation</strong>: Urban areas often face challenges such as pollution, waste management, and loss of green spaces.</li>
+            <li><strong>Disaster Vulnerability</strong>: Cities are increasingly susceptible to natural disasters, exacerbated by climate change and inadequate planning.</li>
+            <li><strong>Funding and Resources</strong>: Many cities lack the financial resources and technical capacity to implement sustainable urban development initiatives.</li>
+        </ul>
+    </section>
+    <section>
+        <h2>Conclusion</h2>
+        <p>SDG 11 is essential for fostering sustainable, inclusive, and resilient cities and communities. By addressing urban challenges and promoting sustainable practices, we can create environments that enhance the quality of life for all residents. Collaborative efforts among governments, businesses, and civil society are crucial to achieving this goal and ensuring that cities are sustainable and livable for future generations.</p>
+    </div>
+    </section>
+    <script>
+        let isSpeaking = false;
+        const readButton = document.getElementById("ReadButton");
+  
+        readButton.addEventListener("click", function () {
+          if (!isSpeaking) {
+            const msg = new SpeechSynthesisUtterance();
+            msg.text = document.querySelector("body").innerText;
+            window.speechSynthesis.speak(msg);
+  
+            isSpeaking = true;
+            readButton.textContent = "Stop Reading";
+  
+            msg.onend = function () {
+              isSpeaking = false;
+              readButton.textContent = "Read Aloud";
+            };
+          } else {
+            window.speechSynthesis.cancel();
+  
+            isSpeaking = false;
+            readButton.textContent = "Read Aloud";
+          }
+        });
+  
+        window.addEventListener("beforeunload", function () {
+          if (speechSynthesis.speaking) {
+            speechSynthesis.cancel();
+          }
+        });
+      </script>
+</body>
+</html>

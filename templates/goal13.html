@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SDG 13: Climate Action</title>
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='pagestyle.css')}}"
+    />
+</head>
+<body>
+    <nav class="bar">
+        <a href="/dashboard" id="ho"><button id="home" >Home</button></a>
+        <button id="ReadButton">Read Aloud</button>
+        <a href="/quiz13" id="qu"><button id="quiz"> QUIZ</button></a>
+       </nav>
+    <section>
+    <div class="container">
+        <h1>Sustainable Development Goal 13: Climate Action</h1>
+        <p>SDG 13 aims to take urgent action to combat climate change and its impacts. Climate change is accelerating, with rising global temperatures, melting ice caps, and extreme weather events becoming more frequent. This goal emphasizes the need for both mitigation—reducing the causes of climate change—and adaptation—minimizing its effects.</p>
+    </section>
+    <section>
+        <h2>Key Targets of SDG 13</h2>
+        <p>The specific targets under SDG 13 are focused on strengthening resilience, improving education, and enhancing climate policies. They include:</p>
+        
+        <ul>
+            <li><strong>Target 13.1</strong>: Strengthen resilience and adaptive capacity to climate-related hazards and natural disasters in all countries.</li>
+            <li><strong>Target 13.2</strong>: Integrate climate change measures into national policies, strategies, and planning.</li>
+            <li><strong>Target 13.3</strong>: Improve education, awareness, and human and institutional capacity on climate change mitigation, adaptation, impact reduction, and early warning.</li>
+            <li><strong>Target 13.a</strong>: Implement the commitment made by developed countries to jointly mobilize $100 billion annually by 2020 to address the needs of developing countries in the context of meaningful mitigation actions.</li>
+            <li><strong>Target 13.b</strong>: Promote mechanisms for raising capacity for effective climate change-related planning and management in least developed countries and small island developing states.</li>
+        </ul>
+    </section>
+    <SEction>
+        <h2>Why SDG 13 is Important</h2>
+        <p>Climate change is a global crisis that affects every aspect of life on Earth. Here are some key reasons why SDG 13 is critical:</p>
+        <ul>
+            <li><strong>Extreme Weather</strong>: Climate change leads to more frequent and severe weather events like hurricanes, floods, droughts, and heatwaves, which cause devastating effects on communities and economies.</li>
+            <li><strong>Rising Sea Levels</strong>: As global temperatures rise, polar ice caps melt, leading to rising sea levels that threaten coastal areas, displacing millions of people and causing habitat loss.</li>
+            <li><strong>Agricultural Impact</strong>: Changing climate patterns disrupt agricultural systems, leading to reduced crop yields, food insecurity, and higher food prices, affecting the world's most vulnerable populations.</li>
+            <li><strong>Human Health</strong>: Climate change exacerbates health issues, including respiratory diseases, heat-related illnesses, and the spread of diseases such as malaria and dengue fever.</li>
+            <li><strong>Biodiversity Loss</strong>: As ecosystems are altered by climate change, many species face extinction due to habitat loss and changing environmental conditions.</li>
+        </ul>
+    </SEction>
+    <SECtion>
+        <h2>Challenges to Achieving SDG 13</h2>
+        <p>Despite growing awareness, there are significant challenges in addressing climate change:</p>
+        <ul>
+            <li><strong>Political Will</strong>: While there is increasing global concern, achieving meaningful progress requires stronger political will and more ambitious commitments from governments and corporations.</li>
+            <li><strong>Economic Interests</strong>: In some industries, the economic costs of transitioning to sustainable practices can be high, leading to resistance from businesses and stakeholders who rely on fossil fuels.</li>
+            <li><strong>Social Inequities</strong>: Vulnerable communities, particularly in developing countries, bear the brunt of climate impacts despite contributing the least to greenhouse gas emissions.</li>
+            <li><strong>Technological Barriers</strong>: Innovations in renewable energy, carbon capture, and other green technologies are critical, but the implementation and scaling of these technologies face challenges.</li>
+        </ul>
+    </SECtion>
+    <SECtion>
+        <h2>How You Can Contribute to SDG 13</h2>
+        <p>There are many ways individuals can take action to combat climate change:</p>
+        <ul>
+            <li><strong>Reduce Your Carbon Footprint</strong>: Adopt eco-friendly habits like using public transport, cycling, reducing meat consumption, and conserving energy in your home.</li>
+            <li><strong>Advocate for Policy Change</strong>: Support local and national climate policies that promote renewable energy, carbon pricing, and reforestation efforts.</li>
+            <li><strong>Educate Yourself and Others</strong>: Stay informed about climate change issues and spread awareness through social media, events, or community discussions.</li>
+            <li><strong>Support Green Businesses</strong>: Choose products and services from companies that prioritize sustainability and reduce their environmental impact.</li>
+            <li><strong>Engage in Community Projects</strong>: Participate in local initiatives like tree planting, clean-up drives, or renewable energy projects that contribute to a more sustainable environment.</li>
+        </ul>
+    </SECtion>
+    <SEction>
+        <h2>Conclusion</h2>
+        <p>Climate change is one of the most urgent global challenges. SDG 13 emphasizes the need for immediate action to reduce emissions, enhance resilience, and integrate climate considerations into all levels of decision-making. Achieving this goal requires collective efforts from governments, businesses, and individuals. Together, we can combat climate change and build a more sustainable future.</p>
+    </div>
+</Section>
+<script>
+    let isSpeaking = false;
+    const readButton = document.getElementById("ReadButton");
+
+    readButton.addEventListener("click", function () {
+      if (!isSpeaking) {
+        const msg = new SpeechSynthesisUtterance();
+        msg.text = document.querySelector("body").innerText;
+        window.speechSynthesis.speak(msg);
+
+        isSpeaking = true;
+        readButton.textContent = "Stop Reading";
+
+        msg.onend = function () {
+          isSpeaking = false;
+          readButton.textContent = "Read Aloud";
+        };
+      } else {
+        window.speechSynthesis.cancel();
+
+        isSpeaking = false;
+        readButton.textContent = "Read Aloud";
+      }
+    });
+
+    window.addEventListener("beforeunload", function () {
+      if (speechSynthesis.speaking) {
+        speechSynthesis.cancel();
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SDG 7: Affordable and Clean Energy</title>
+    <link
+    rel="stylesheet"
+    href="{{url_for('static', filename='pagestyle.css')}}"
+  />
+</head>
+<body>
+    <nav class="bar">
+        <a href="/dashboard" id="ho"><button id="home" >Home</button></a>
+        <button id="ReadButton">Read Aloud</button>
+        <a href="/quiz7" id="qu"><button id="quiz"> QUIZ</button></a>
+       </nav>
+    <section>
+    <div class="container">
+        <h1>Sustainable Development Goal 7: Affordable and Clean Energy</h1>
+        <p>Sustainable Development Goal 7 (SDG 7) aims to ensure access to affordable, reliable, sustainable, and modern energy for all. Energy is a crucial driver of economic growth and development, and access to clean energy is vital for reducing poverty, improving health, and fostering sustainable development.</p>
+    </section>
+    <section>
+        <h2>Key Targets of SDG 7</h2>
+        <p>SDG 7 includes 5 targets that focus on various aspects of energy access, efficiency, and sustainability. Here are the major targets:</p>
+        
+        <ul>
+            <li><strong>Universal Access to Energy (Target 7.1)</strong>: By 2030, ensure universal access to affordable, reliable, and modern energy services for all.</li>
+            <li><strong>Increase Renewable Energy Share (Target 7.2)</strong>: By 2030, increase substantially the share of renewable energy in the global energy mix.</li>
+            <li><strong>Improve Energy Efficiency (Target 7.3)</strong>: By 2030, double the global rate of improvement in energy efficiency.</li>
+            <li><strong>Access to Sustainable Energy (Target 7.a)</strong>: Facilitate access to clean energy research and technology, including renewable energy, energy efficiency, and low-carbon technologies.</li>
+            <li><strong>Energy Infrastructure (Target 7.b)</strong>: Expand infrastructure and upgrade technology for supplying modern and sustainable energy services for all in developing countries.</li>
+        </ul>
+    </section>
+    <section>
+        <h2>Why SDG 7 is Important</h2>
+        <p>Achieving SDG 7 is critical for several reasons:</p>
+        <ul>
+            <li><strong>Poverty Reduction</strong>: Access to affordable and clean energy is essential for poverty alleviation, as it enables economic opportunities, supports education, and improves health outcomes.</li>
+            <li><strong>Health Benefits</strong>: Clean energy reduces indoor air pollution from traditional fuels, improving health and reducing respiratory diseases.</li>
+            <li><strong>Environmental Sustainability</strong>: Transitioning to renewable energy sources helps mitigate climate change, reducing greenhouse gas emissions and promoting environmental sustainability.</li>
+            <li><strong>Economic Growth</strong>: Access to modern energy supports economic growth and job creation in various sectors, including manufacturing, agriculture, and services.</li>
+            <li><strong>Gender Equality</strong>: Access to clean energy can empower women by reducing the time spent on household chores related to energy, such as collecting fuel and cooking, allowing them to engage in education and economic activities.</li>
+        </ul>
+    </section>
+    <section>
+        <h2>Current Challenges to Achieving SDG 7</h2>
+        <p>Despite progress, significant challenges remain:</p>
+        <ul>
+            <li><strong>Energy Poverty</strong>: Nearly 800 million people still lack access to electricity, particularly in sub-Saharan Africa and rural areas.</li>
+            <li><strong>Dependence on Fossil Fuels</strong>: Many countries remain heavily dependent on fossil fuels for energy, leading to high carbon emissions and environmental degradation.</li>
+            <li><strong>Investment Gaps</strong>: There is a significant funding gap for clean energy projects, particularly in developing countries, which limits access to modern energy services.</li>
+            <li><strong>Technological Barriers</strong>: Lack of access to advanced energy technologies and infrastructure hampers the adoption of renewable energy sources.</li>
+            <li><strong>Policy and Regulatory Issues</strong>: Inconsistent policies and regulations can hinder investment in renewable energy and energy efficiency initiatives.</li>
+        </ul>
+    </section>
+    <section>
+        <h2>Conclusion</h2>
+        <p>SDG 7 is essential for achieving a sustainable future, as affordable and clean energy is vital for health, economic growth, and environmental sustainability. To achieve this goal, concerted efforts are required from governments, businesses, and communities to overcome challenges, promote renewable energy, and ensure universal access to modern energy services. Collaborative action will play a crucial role in building a more sustainable and equitable world.</p>
+    </div>
+    </section>
+    <script>
+        let isSpeaking = false;
+        const readButton = document.getElementById("ReadButton");
+  
+        readButton.addEventListener("click", function () {
+          if (!isSpeaking) {
+            const msg = new SpeechSynthesisUtterance();
+            msg.text = document.querySelector("body").innerText;
+            window.speechSynthesis.speak(msg);
+  
+            isSpeaking = true;
+            readButton.textContent = "Stop Reading";
+  
+            msg.onend = function () {
+              isSpeaking = false;
+              readButton.textContent = "Read Aloud";
+            };
+          } else {
+            window.speechSynthesis.cancel();
+  
+            isSpeaking = false;
+            readButton.textContent = "Read Aloud";
+          }
+        });
+  
+        window.addEventListener("beforeunload", function () {
+          if (speechSynthesis.speaking) {
+            speechSynthesis.cancel();
+          }
+        });
+      </script>
+</body>
+</html>

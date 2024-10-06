@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SDG Quiz for Kids</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='Quiz1.css')}}" />
+</head>
+<body>
+    <header>
+        <h1>Learn & Play: Sustainable Development Goals Quiz</h1>
+        <p>Test your knowledge about how we can make the world a better place!</p>
+    </header>
+
+    <section id="quiz">
+        <h2>Sustainable Development Goals (SDG4-Quality Education) Quiz</h2>
+        
+        
+        <div class="question">
+            <p><strong>1. What is the primary goal of SDG 4 (Quality Education)?</strong></p>
+            <form id="question1">
+                <input type="radio" id="q1a" name="q1" value="wrong">
+                <label for="q1a">To provide everyone with access to free internet</label><br><br>
+                <input type="radio" id="q1b" name="q1" value="right">
+                <label for="q1b">To ensure inclusive and equitable quality education and promote lifelong learning opportunities for all</label><br><br>
+                <input type="radio" id="q1c" name="q1" value="wrong">
+                <label for="q1c">To increase the number of private schools</label><br>
+            </form>
+        </div>
+
+        
+        <div class="question">
+            <p><strong>2.By which year does SDG 4 aim to ensure that all girls and boys complete free, equitable, and quality primary and secondary education?</strong></p>
+            <form id="question2">
+                <input type="radio" id="q2a" name="q2" value="wrong">
+                <label for="q2a">2025</label><br><br>
+                <input type="radio" id="q2b" name="q2" value="right">
+                <label for="q2b">2030</label><br><br>
+                <input type="radio" id="q2c" name="q2" value="wrong">
+                <label for="q2c">2035</label><br>
+            </form>
+        </div>
+
+        
+        <div class="question">
+            <p><strong>3. What is one of the targets of SDG 4 related to skills development?</strong></p>
+            <form id="question3">
+                <input type="radio" id="q3a" name="q3" value="right">
+                <label for="q3a"> Ensure all young people and adults have literacy and numeracy skills </label><br><br>
+                <input type="radio" id="q3b" name="q3" value="wrong">
+                <label for="q3b">Teach everyone advanced robotics by 2025</label><br><br>
+                <input type="radio" id="q3c" name="q3" value="wrong">
+                <label for="q3c">Focus only on higher education degrees</label><br>
+            </form>
+        </div>
+        
+        <div class="question">
+            <p><strong>4. Which of the following groups is often excluded from achieving quality education, according to SDG 4?</strong></p>
+            <form id="question3">
+                <input type="radio" id="q4a" name="q4" value="right">
+                <label for="q4a"> Children in rural areas and those with disabilities</label><br><br>
+                <input type="radio" id="q4b" name="q4" value="wrong">
+                <label for="q4b"> Adults in cities</label><br><br>
+                <input type="radio" id="q4c" name="q4" value="wrong">
+                <label for="q4c"> High-income individuals</label><br>
+            </form>
+        </div>
+        <div class="question">
+            <p><strong>5. Which of the following is a significant barrier to achieving SDG 4 in many developing countries?</strong></p>
+            <form id="question3">
+                <input type="radio" id="q5a" name="q5" value="right">
+                <label for="q5a">A shortage of well-trained teachers and insufficient educational resources</label><br><br>
+                <input type="radio" id="q5b" name="q5" value="wrong">
+                <label for="q5b"> Overcrowding in universities</label><br><br>
+                <input type="radio" id="q5c" name="q5" value="wrong">
+                <label for="q5c"> Too much access to online learning</label><br>
+            </form>
+        </div>
+         
+         <button type="button" onclick="checkAnswers()">Submit Answers</button>
+
+         
+         <div id="result"></div>
+     </section>
+ 
+    
+     <script src="{{ url_for('static', filename='sdg1.js') }}"></script>
+ </body>
+ </html>

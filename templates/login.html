@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>SDG</title>
+    <style>
+      body {
+        background-color: #f3f4f6;
+        background-image: url("https://envs.sh/BPt.jpg");
+        background-size: cover;
+        background-position: center;
+        font-family: "Arial", sans-serif;
+      }
+
+      .navbar {
+        background-color: rgb(62, 58, 58);
+        color: white;
+        padding: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        border-radius: 10px;
+        margin-bottom: 30px;
+      }
+
+      #whole {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        height: 100vh;
+      }
+
+      #sign {
+        background-color: white;
+        width: 350px;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+        text-align: center;
+      }
+
+      #sign h1 {
+        font-size: 24px;
+        margin-bottom: 20px;
+        color: #333;
+      }
+
+      .input-column {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        margin-bottom: 20px;
+      }
+
+      .input-area {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+      }
+
+      .input-area input {
+        width: 100%;
+        padding: 12px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        font-size: 16px;
+      }
+
+      .btn-column {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 20px;
+      }
+
+      #signbtn,
+      #guest-btn {
+        width: 100%;
+        padding: 12px;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      #signbtn {
+        background-color: #007bff;
+        color: white;
+        border: none;
+      }
+
+      #signbtn:hover {
+        background-color: #0056b3;
+      }
+
+      #guest-btn {
+        background-color: #28a745;
+        color: white;
+        border: none;
+      }
+
+      #guest-btn:hover {
+        background-color: #218838;
+      }
+
+      .reset-link {
+        display: inline-block;
+        margin-top: 10px;
+        color: #007bff;
+        text-decoration: none;
+      }
+
+      .reset-link:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="whole">
+      <form action="/login" id="sign" method="post">
+        <h1>Login Page</h1>
+        <div class="input-column">
+          <div class="input-area">
+            <input type="text" name="email" placeholder="email" />
+          </div>
+          <div class="input-area">
+            <input type="password" name="password" placeholder="Password" />
+          </div>
+        </div>
+        <div class="btn-column">
+          <div class="input-area">
+            <input type="submit" value="Login" id="signbtn" />
+          </div>
+          <div class="input-area">
+            <a href="/signup"> <button id="guest-btn">SignUp</button></a>
+          </div>
+        </div>
+        <label>Forget Password? ---</label>
+        <a href="/forgotten" class="reset-link">Reset Password</a>
+      </form>
+    </div>
+    <script>
+      document.getElementById("sign").onsubmit = async function (event) {
+        event.preventDefault();
+        const email = document.querySelector('input[name="email"]').value;
+        const password = document.querySelector('input[name="password"]').value;
+
+        const response = await fetch("/login", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email, password }),
+        });
+
+        const result = await response.json();
+        alert(result.message);
+
+        if (response.ok) {
+          window.location.href = "/dashboard";
+        }
+      };
+
+      document.getElementById("guest-btn").onclick = async function () {
+        const response = await fetch("/login", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email: "guest", password: "guest" }),
+        });
+
+        const result = await response.json();
+        alert(result.message);
+
+        if (response.ok) {
+          window.location.href = "/";
+        }
+      };
+    </script>
+  </body>
+</html>
+s

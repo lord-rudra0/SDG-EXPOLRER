@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SDG Quiz for Kids</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='Quiz1.css')}}" />
+  </head>
+  <body>
+    <header>
+      <h1>Learn & Play: Sustainable Development Goals Quiz</h1>
+      <p>Test your knowledge about how we can make the world a better place!</p>
+    </header>
+
+    <section id="quiz">
+      <h2>Sustainable Development Goals (SDG1-No Poverty) Quiz</h2>
+
+      <div class="question">
+        <p>
+          <strong>1.What is considered “extreme poverty” under SDG 1?</strong>
+        </p>
+        <form id="question1">
+          <input type="radio" id="q1a" name="q1" value="right" />
+          <label for="q1a">Living on less than $1.90 a day</label><br /><br />
+          <input type="radio" id="q1b" name="q1" value="wrong" />
+          <label for="q1b">Living on less than $10 a day</label><br /><br />
+          <input type="radio" id="q1c" name="q1" value="wrong" />
+          <label for="q1c">Living on less than $5 a day</label><br />
+        </form>
+      </div>
+
+      <div class="question">
+        <p>
+          <strong
+            >2. Which of the following is one way SDG 1 aims to reduce
+            poverty?</strong
+          >
+        </p>
+        <form id="question2">
+          <input type="radio" id="q2a" name="q2" value="wrong" />
+          <label for="q2a">Increase luxury taxes</label><br /><br />
+          <input type="radio" id="q2b" name="q2" value="right" />
+          <label for="q2b"
+            >Implement social protection systems, such as pensions and
+            unemployment benefits</label
+          ><br /><br />
+          <input type="radio" id="q2c" name="q2" value="wrong" />
+          <label for="q2c"
+            >Encourage all people to invest in the stock market</label
+          ><br />
+        </form>
+      </div>
+
+      <div class="question">
+        <p>
+          <strong
+            >3. By which year does SDG 1 aim to eradicate extreme poverty for
+            all people globally?</strong
+          >
+        </p>
+        <form id="question3">
+          <input type="radio" id="q3a" name="q3" value="right" />
+          <label for="q3a">2030</label><br /><br />
+          <input type="radio" id="q3b" name="q3" value="wrong" />
+          <label for="q3b">2045</label><br /><br />
+          <input type="radio" id="q3c" name="q3" value="wrong" />
+          <label for="q3c">2050</label><br />
+        </form>
+      </div>
+
+      <div class="question">
+        <p>
+          <strong
+            >4. What percentage of the global population was living in extreme
+            poverty in 2015, according to SDG 1 targets?</strong
+          >
+        </p>
+        <form id="question3">
+          <input type="radio" id="q4a" name="q4" value="wrong" />
+          <label for="q4a"> 50% </label><br /><br />
+          <input type="radio" id="q4b" name="q4" value="wrong" />
+          <label for="q4b"> 25%</label><br /><br />
+          <input type="radio" id="q4c" name="q4" value="right" />
+          <label for="q4c"> 10%</label><br />
+        </form>
+      </div>
+
+      <div class="question">
+        <p>
+          <strong
+            >5. Which of the following groups are considered most vulnerable to
+            falling into extreme poverty, according to SDG 1?</strong
+          >
+        </p>
+        <form id="question3">
+          <input type="radio" id="q5a" name="q5" value="wrong" />
+          <label for="q5a"> University students</label><br /><br />
+          <input type="radio" id="q5b" name="q5" value="right" />
+          <label for="q5b">
+            Children, older people, and those living in rural areas</label
+          ><br /><br />
+          <input type="radio" id="q5c" name="q5" value="wrong" />
+          <label for="q5c"> CEOs and corporate executives</label><br />
+        </form>
+      </div>
+
+      <button type="button" onclick="checkAnswers()">Submit Answers</button>
+
+      <div id="result"></div>
+    </section>
+
+    <script src="{{ url_for('static', filename='sdg1.js') }}"></script>
+  </body>
+</html>

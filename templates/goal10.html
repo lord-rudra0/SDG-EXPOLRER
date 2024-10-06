@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SDG 10: Reduced Inequality</title>
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='pagestyle.css')}}"
+    />
+</head>
+<body>
+    <nav class="bar">
+        <a href="/dashboard" id="ho"><button id="home" >Home</button></a>
+        <button id="ReadButton">Read Aloud</button>
+        <a href="/quiz10" id="qu"><button id="quiz"> QUIZ</button></a>
+       </nav>
+    <section>
+    <div class="container">
+        <h1>Sustainable Development Goal 10: Reduced Inequality</h1>
+        <p>Sustainable Development Goal 10 (SDG 10) aims to reduce inequality within and among countries. It addresses the growing disparities in wealth and opportunity, recognizing that inequality is a barrier to sustainable development and social cohesion. By promoting equal opportunities and reducing disparities, societies can foster inclusion and empowerment for all.</p>
+</section>
+<section>
+        <h2>Key Targets of SDG 10</h2>
+        <p>SDG 10 includes 10 targets that focus on various aspects of reducing inequality. Here are the major targets:</p>
+        
+        <ul>
+            <li><strong>Income Growth (Target 10.1)</strong>: Achieve and sustain income growth of the bottom 40% of the population at a rate higher than the national average.</li>
+            <li><strong>Universal Social Protection (Target 10.2)</strong>: Empower and promote the social, economic, and political inclusion of all, irrespective of age, gender, disability, race, ethnicity, origin, religion, economic, or other status.</li>
+            <li><strong>Equal Opportunity (Target 10.3)</strong>: Ensure equal opportunity and reduce inequalities of outcome, including by eliminating discriminatory laws, policies, and practices.</li>
+            <li><strong>Migration and Mobility (Target 10.7)</strong>: Facilitate orderly, safe, regular, and responsible migration and mobility of people, including through the implementation of planned and well-managed migration policies.</li>
+            <li><strong>Financial Inclusion (Target 10.5)</strong>: Improve the regulation and monitoring of financial markets and institutions and encourage development assistance and foreign direct investment to regions where the need is greatest.</li>
+            <li><strong>Development Assistance (Target 10.a)</strong>: Implement the principle of special and differential treatment for developing countries, in particular least developed countries, in accordance with World Trade Organization agreements.</li>
+            <li><strong>Inclusive Economic Growth (Target 10.b)</strong>: Encourage official development assistance and foreign direct investment to regions where the need is greatest, particularly in least developed countries.</li>
+            <li><strong>Empowerment of Women and Girls (Target 10.c)</strong>: By 2030, reduce the transaction costs of migrant remittances to less than 3% of the amount remitted.</li>
+        </ul>
+    </section>
+    <section>
+        <h2>Why SDG 10 is Important</h2>
+        <p>Achieving SDG 10 is critical for several reasons:</p>
+        <ul>
+            <li><strong>Social Cohesion</strong>: Reducing inequality fosters social cohesion and stability, as it promotes a sense of belonging and acceptance among diverse groups.</li>
+            <li><strong>Economic Growth</strong>: Inclusive economic growth leads to higher productivity and economic performance, benefiting society as a whole.</li>
+            <li><strong>Access to Opportunities</strong>: Ensuring equal access to education, healthcare, and employment opportunities empowers individuals and communities, enhancing their potential to contribute to society.</li>
+            <li><strong>Empowerment of Marginalized Groups</strong>: Addressing inequalities helps empower marginalized and disadvantaged groups, promoting their rights and participation in decision-making processes.</li>
+            <li><strong>Sustainable Development</strong>: Reducing inequality is essential for achieving sustainable development, as it addresses the root causes of poverty and social exclusion.</li>
+        </ul>
+    </section>
+    <section>
+        <h2>Current Challenges to Achieving SDG 10</h2>
+        <p>Despite progress, significant challenges remain:</p>
+        <ul>
+            <li><strong>Economic Disparities</strong>: Widening income and wealth gaps between rich and poor, both within and between countries, continue to persist.</li>
+            <li><strong>Discrimination and Marginalization</strong>: Structural inequalities based on gender, race, ethnicity, and disability hinder equal opportunities for many individuals.</li>
+            <li><strong>Limited Access to Resources</strong>: Lack of access to education, healthcare, and financial services perpetuates cycles of poverty and inequality.</li>
+            <li><strong>Political Instability</strong>: Conflict and political instability can exacerbate inequalities, particularly in vulnerable regions and communities.</li>
+            <li><strong>Global Crises</strong>: Economic downturns, natural disasters, and health pandemics, such as COVID-19, disproportionately impact marginalized groups, further widening existing inequalities.</li>
+        </ul>
+    </section>
+    <section>
+        <h2>Conclusion</h2>
+        <p>SDG 10 is essential for achieving a sustainable future, as reducing inequality is vital for social cohesion, economic growth, and empowerment. To achieve this goal, it is imperative to promote equal opportunities, eliminate discriminatory practices, and support marginalized groups. Collaborative efforts among governments, businesses, and civil society are crucial to overcoming challenges and ensuring a more equitable world for all.</p>
+    </div>
+</section>
+<script>
+    let isSpeaking = false;
+    const readButton = document.getElementById("ReadButton");
+
+    readButton.addEventListener("click", function () {
+      if (!isSpeaking) {
+        const msg = new SpeechSynthesisUtterance();
+        msg.text = document.querySelector("body").innerText;
+        window.speechSynthesis.speak(msg);
+
+        isSpeaking = true;
+        readButton.textContent = "Stop Reading";
+
+        msg.onend = function () {
+          isSpeaking = false;
+          readButton.textContent = "Read Aloud";
+        };
+      } else {
+        window.speechSynthesis.cancel();
+
+        isSpeaking = false;
+        readButton.textContent = "Read Aloud";
+      }
+    });
+
+    window.addEventListener("beforeunload", function () {
+      if (speechSynthesis.speaking) {
+        speechSynthesis.cancel();
+      }
+    });
+  </script>
+</body>
+</html>

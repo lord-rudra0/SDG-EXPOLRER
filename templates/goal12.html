@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SDG 12: Responsible Consumption and Production</title>
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='pagestyle.css')}}"
+    />
+</head>
+<body>
+    <nav class="bar">
+        <a href="/dashboard" id="ho"><button id="home" >Home</button></a>
+        <button id="ReadButton">Read Aloud</button>
+        <a href="/quiz12" id="qu"><button id="quiz"> QUIZ</button></a>
+       </nav>
+    <section>
+    <div class="container">
+        <h1>Sustainable Development Goal 12: Responsible Consumption and Production</h1>
+        <p>SDG 12 aims to ensure sustainable consumption and production patterns. It focuses on reducing waste, promoting resource efficiency, and encouraging a sustainable lifestyle to reduce humanity's ecological footprint.</p>
+    </section>
+    <section>
+        <h2>Key Targets of SDG 12</h2>
+        <p>SDG 12 has several key targets aimed at promoting sustainability across production and consumption:</p>
+        
+        <ul>
+            <li><strong>Sustainable Management (Target 12.1)</strong>: Implement the 10-Year Framework of Programs on sustainable consumption and production in all countries.</li>
+            <li><strong>Efficient Use of Resources (Target 12.2)</strong>: By 2030, achieve sustainable management and efficient use of natural resources.</li>
+            <li><strong>Food Waste Reduction (Target 12.3)</strong>: By 2030, halve global food waste at the retail and consumer levels and reduce food losses along production and supply chains.</li>
+            <li><strong>Responsible Chemicals Management (Target 12.4)</strong>: By 2020, achieve environmentally sound management of chemicals and all wastes throughout their lifecycle.</li>
+            <li><strong>Waste Reduction (Target 12.5)</strong>: Substantially reduce waste generation through prevention, reduction, recycling, and reuse.</li>
+            <li><strong>Sustainable Practices (Target 12.6)</strong>: Encourage companies, especially large ones, to adopt sustainable practices and integrate sustainability information into their reporting cycle.</li>
+            <li><strong>Sustainable Public Procurement (Target 12.7)</strong>: Promote public procurement practices that are sustainable and consistent with national priorities.</li>
+            <li><strong>Consumer Awareness (Target 12.8)</strong>: Ensure that people everywhere have the relevant information and awareness for sustainable development and lifestyles in harmony with nature.</li>
+            <li><strong>Support for Developing Countries (Target 12.a)</strong>: Support developing countries to strengthen their scientific and technological capacity for more sustainable consumption and production.</li>
+        </ul>
+    </section>
+    <section>
+        <h2>Why SDG 12 is Important</h2>
+        <p>SDG 12 addresses critical challenges in consumption and production that have far-reaching impacts:</p>
+        <ul>
+            <li><strong>Environmental Degradation</strong>: Overconsumption and unsustainable production practices lead to resource depletion, deforestation, water scarcity, and pollution.</li>
+            <li><strong>Climate Change</strong>: Unsustainable consumption and production are major drivers of greenhouse gas emissions, contributing to global climate change.</li>
+            <li><strong>Resource Efficiency</strong>: Efficient use of resources minimizes waste, conserves energy, and reduces environmental impact, benefiting both economies and ecosystems.</li>
+            <li><strong>Waste Management</strong>: Managing waste through reduction, recycling, and reuse helps reduce pollution and landfill use, protecting biodiversity and human health.</li>
+        </ul>
+    </section>
+    <section>
+        <h2>Current Challenges to Achieving SDG 12</h2>
+        <p>Despite efforts, several challenges stand in the way of achieving responsible consumption and production patterns:</p>
+        <ul>
+            <li><strong>Overconsumption</strong>: In many regions, consumer demand for products and services exceeds what can be sustainably produced, leading to resource depletion.</            <li><strong>Lack of Awareness</strong>: Many consumers and businesses are unaware of the long-term impacts of their consumption and production patterns, leading to unsustainable choices.</li>
+            <li><strong>Industrial Practices</strong>: Many industries continue to rely on resource-intensive production methods that contribute to environmental degradation.</li>
+            <li><strong>Waste Generation</strong>: Rapid urbanization and population growth have increased waste generation, straining waste management systems and contributing to pollution.</li>
+            <li><strong>Limited Access to Technology</strong>: Developing countries often lack the technological capacity needed to adopt more sustainable production methods.</li>
+        </ul>
+    </section>
+    <section>
+        <h2>How to Promote Responsible Consumption and Production</h2>
+        <p>Here are some ways individuals, businesses, and governments can contribute to SDG 12:</p>
+        <ul>
+            <li><strong>Reduce, Reuse, Recycle</strong>: Individuals can reduce waste by consuming less, reusing products, and recycling materials whenever possible.</li>
+            <li><strong>Responsible Purchasing</strong>: Consumers can make informed decisions by purchasing products that are sustainably produced and have minimal environmental impact.</li>
+            <li><strong>Sustainable Business Practices</strong>: Businesses should implement sustainable practices in production, such as reducing waste, using renewable energy, and reporting their sustainability efforts.</li>
+            <li><strong>Public Awareness Campaigns</strong>: Governments and NGOs can run campaigns to educate the public about responsible consumption, resource efficiency, and waste reduction.</li>
+        </ul>
+    </section>
+    <section>
+        <h2>Conclusion</h2>
+        <p>SDG 12 highlights the urgent need for a shift in how we consume and produce resources. By promoting sustainable practices, reducing waste, and fostering responsible consumer behavior, we can protect the planet’s resources for future generations while supporting economic growth and improving quality of life for all.</p>
+    </div>
+    </section>
+    <script>
+        let isSpeaking = false;
+        const readButton = document.getElementById("ReadButton");
+  
+        readButton.addEventListener("click", function () {
+          if (!isSpeaking) {
+            const msg = new SpeechSynthesisUtterance();
+            msg.text = document.querySelector("body").innerText;
+            window.speechSynthesis.speak(msg);
+  
+            isSpeaking = true;
+            readButton.textContent = "Stop Reading";
+  
+            msg.onend = function () {
+              isSpeaking = false;
+              readButton.textContent = "Read Aloud";
+            };
+          } else {
+            window.speechSynthesis.cancel();
+  
+            isSpeaking = false;
+            readButton.textContent = "Read Aloud";
+          }
+        });
+  
+        window.addEventListener("beforeunload", function () {
+          if (speechSynthesis.speaking) {
+            speechSynthesis.cancel();
+          }
+        });
+      </script>
+</body>
+</html>
