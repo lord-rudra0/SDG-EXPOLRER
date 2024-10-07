@@ -5,4 +5,3 @@ langchain-community
 huggingface_hub
 pypdf
 langchain-google-genai
-langchain-google-genai-community
