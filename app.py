@@ -23,6 +23,9 @@ app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY') or 'your_default_secret_
 
 db = SQLAlchemy(app)
 
+#delete the all data from the database
+
+
 class User(db.Model):
     __tablename__ = 'users'  
     id = db.Column(db.Integer, primary_key=True)
@@ -44,25 +47,18 @@ def generate_random_key(length=16):
     random_key = ''.join(random.choice(characters) for _ in range(length))
     return random_key
 
+# if User:
+#     print(f'User {User.username} hashed password: {User.password}')
+#     print(f'Check password: {check_password_hash(User.password, "password")}')
+    
+# else:
+    
+#     print('User does not exist')
+    
+
 @app.route('/')
 def index():
     return render_template('index.html')  
-
-@app.route('/login', methods=['GET', 'POST'])
-def login():
-    if request.method == 'POST':
-        data = request.get_json()
-        email = data.get('email')
-        password = data.get('password')
-        if email and password:
-            user = User.query.filter_by(email=email, password=password).first()
-            if user:
-                session['email'] = email
-                return jsonify({'message': 'Login successful'}),200
-            else:
-                return jsonify({'message': 'Invalid credentials'}), 401
-    return render_template('login.html')  
-
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
     if request.method == 'POST':
@@ -71,7 +67,9 @@ def signup():
         email = data.get('email')
         password = data.get('password')
         phone = data.get('phone')
-
+         
+            
+            
         if username and email and password and phone:
             existing_user = User.query.filter((User.username == username) | (User.email == email)).first()
             if existing_user:
@@ -82,14 +80,46 @@ def signup():
             db.session.add(user)
             db.session.commit()
 
-            session['email'] = email  # Set session to track login status
+            session['email'] = email  
             return jsonify({'message': 'Signup successful'}), 200
         
         return jsonify({'message': 'All fields are required'}), 400 
     
     return render_template('signup.html'), 200
 
-@app.route('/logout')
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        data = request.get_json()
+        email = data.get('email')
+        password = data.get('password') 
+        
+        print(email, password)
+        if email and password:
+            user = User.query.filter_by(email=email).first()
+            if user and check_password_hash(user.password, password):
+                session['email'] = email
+                return jsonify({'message': 'Login successful'}),200
+            else:
+                return jsonify({'message': 'Invalid credentials'}), 401
+    return render_template('login.html')  
+
+def login_required(f):
+    def decorated_function(*args, **kwargs):
+        if 'email' not in session:
+            return jsonify({'message': 'Unauthorized'}), 401
+        return f(*args, **kwargs)
+    return decorated_function
+
+
+@app.route('/dashboard', endpoint='dashboard')
+@login_required
+def dashboard():
+    return render_template('indexdash.html')
+
+@app.route('/logout', endpoint='logout')
+@login_required
 def logout():
     session.pop('email', None)
     return jsonify({'message': 'Logout successful'})
@@ -259,9 +289,7 @@ def quiz16():
 def quiz17():
     return render_template('quiz17.html')
 
-@app.route('/dashboard')
-def dashboard():
-    return render_template('indexdash.html')
+
 
 @app.route('/dashboard-game1')
 def dashboard_games():
@@ -276,8 +304,8 @@ def dashboard_games2():
 
 CORS(app)
 
-OPENAI_API_KEY = 'AIzaSyDSFSqcDt43ezHzFW1npREHhQ_E6Lvox2M'  # Make sure to replace this with your actual key
-loader = PyPDFLoader("C:/SDG EXPOLRER/models/SDG.pdf")  # Adjust path as needed
+OPENAI_API_KEY = 'AIzaSyDSFSqcDt43ezHzFW1npREHhQ_E6Lvox2M'  
+loader = PyPDFLoader("C:/SDG _EXPOLRER/SDG.pdf")  
 pages = loader.load()
 
 text_splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=50)

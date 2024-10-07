@@ -71,7 +71,7 @@
         type="text"
         id="username"
         name="username"
-        placeholder="Username"
+        placeholder="Name"
         required
       />
       <input type="text" id="email" name="email" placeholder="Email" required />
@@ -107,14 +107,12 @@
       document.getElementById("signupForm").onsubmit = async function (event) {
         event.preventDefault();
 
-
         const username = document.getElementById("username").value.trim();
         const email = document.getElementById("email").value.trim();
         const phone = document.getElementById("phone").value.trim();
         const password = document.getElementById("password").value;
         const confirmPassword = document.getElementById("password2").value;
 
-        =
         if (!username || !email || !phone || !password || !confirmPassword) {
           alert("Please fill in all fields.");
           return;
@@ -126,7 +124,7 @@
         }
 
         try {
-          const response = await fetch("http://127.0.0.1:5000/signup", {
+          const response = await fetch("/signup", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -139,13 +137,11 @@
             }),
           });
 
-
           if (response.ok) {
             const data = await response.json();
             alert(data.message);
             window.location.href = "/login";
           } else {
-
             const errorData = await response.json();
             alert(errorData.message || "Signup failed. Please try again.");
           }
