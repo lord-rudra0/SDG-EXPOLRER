@@ -12,11 +12,12 @@ from langchain.chains import RetrievalQA
 from langchain_google_genai import ChatGoogleGenerativeAI, GoogleGenerativeAIEmbeddings
 from langchain_community.document_loaders import PyPDFLoader
 from flask_cors import CORS
+from sqlalchemy import create_engine
 
 app = Flask(__name__)
 
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///C:/SDG EXPOLRER/your_database.db'  
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///C:/SDG EXPOLRER/your_database.db' 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY') or 'your_default_secret_key'
 
