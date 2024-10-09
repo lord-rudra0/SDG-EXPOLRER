@@ -104,6 +104,9 @@ def login():
                 return jsonify({'message': 'Login successful'}),200
             else:
                 return jsonify({'message': 'Invalid credentials'}), 401
+    
+    
+    
     return render_template('login.html')  
 
 def login_required(f):
