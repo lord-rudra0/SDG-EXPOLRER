@@ -309,7 +309,7 @@ def dashboard_games2():
 CORS(app)
 
 OPENAI_API_KEY = 'AIzaSyDSFSqcDt43ezHzFW1npREHhQ_E6Lvox2M'  
-loader = PyPDFLoader("C:/SDG _EXPOLRER/SDG.pdf")  
+loader = PyPDFLoader("SDG.pdf")  
 pages = loader.load()
 
 text_splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=50)
