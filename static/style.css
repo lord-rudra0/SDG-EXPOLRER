@@ -271,3 +271,9 @@ nav button {
     text-decoration: none;
     cursor: pointer;
 }
+
+.footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #f1f1f1;
+}
