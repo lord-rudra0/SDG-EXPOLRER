@@ -1,2 +1,8 @@
 #ignore all the .env file
 .env
+
+#ignore all the __pycache__ folder
+/__pycache__/
+
+#ignore all the .vscode folder
+/.vscode/

@@ -308,7 +308,7 @@ def dashboard_games2():
 
 CORS(app)
 
-OPENAI_API_KEY = 'AIzaSyDSFSqcDt43ezHzFW1npREHhQ_E6Lvox2M'  
+OPENAI_API_KEY = os.getenv("google_api_key") 
 loader = PyPDFLoader("SDG.pdf")  
 pages = loader.load()
 
